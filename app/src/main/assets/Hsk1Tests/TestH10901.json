@@ -1,0 +1,361 @@
+{
+  "testId": "H10901",
+  "level": "HSK (一级)",
+  "title": "新汉语水平考试",
+  "sections": {
+    "listening": {
+      "title": "听力",
+      "parts": {
+        "part1": {
+          "title": "第一部分",
+          "instructions": "For questions 1-5, listen to the phrase and decide if it matches the image (True √ or False X). Each item will be played twice.",
+          "questions": [
+            {
+              "questionNumber": 1,
+              "type": "true-false-image",
+              "audioScript": "打电话 (dǎ diànhuà)",
+              "answer": "√"
+            },
+            {
+              "questionNumber": 2,
+              "type": "true-false-image",
+              "audioScript": "我和儿子 (wǒ hé érzi)",
+              "answer": "X"
+            },
+            {
+              "questionNumber": 3,
+              "type": "true-false-image",
+              "audioScript": "开车 (kāi chē)",
+              "answer": "X"
+            },
+            {
+              "questionNumber": 4,
+              "type": "true-false-image",
+              "audioScript": "吃米饭 (chī mǐfàn)",
+              "answer": "X"
+            },
+            {
+              "questionNumber": 5,
+              "type": "true-false-image",
+              "audioScript": "下雨了 (xià yǔ le)",
+              "answer": "√"
+            }
+          ]
+        },
+        "part2": {
+          "title": "第二部分",
+          "instructions": "For questions 6-10, listen to the sentence and choose the corresponding image (A, B, or C). Each item will be played twice.",
+          "questions": [
+            {
+              "questionNumber": 6,
+              "type": "multiple-choice-image",
+              "audioScript": "今天天气很冷。 (Jīntiān tiānqì hěn lěng.)",
+              "options": ["A", "B", "C"],
+              "answer": "A"
+            },
+            {
+              "questionNumber": 7,
+              "type": "multiple-choice-image",
+              "audioScript": "现在是十点十分。 (Xiànzài shì shí diǎn shí fēn.)",
+              "options": ["A", "B", "C"],
+              "answer": "A"
+            },
+            {
+              "questionNumber": 8,
+              "type": "multiple-choice-image",
+              "audioScript": "她后面有几个人。 (Tā hòumiàn yǒu jǐ ge rén.)",
+              "options": ["A", "B", "C"],
+              "answer": "C"
+            },
+            {
+              "questionNumber": 9,
+              "type": "multiple-choice-image",
+              "audioScript": "我今年12岁了。 (Wǒ jīnnián 12 suì le.)",
+              "options": ["A", "B", "C"],
+              "answer": "A"
+            },
+            {
+              "questionNumber": 10,
+              "type": "multiple-choice-image",
+              "audioScript": "他下个月去中国。 (Tā xià ge yuè qù Zhōngguó.)",
+              "options": ["A", "B", "C"],
+              "answer": "C"
+            }
+          ]
+        },
+        "part3": {
+          "title": "第三部分",
+          "instructions": "For questions 11-15, listen to the dialogue and choose the corresponding image (A-F). Each item will be played twice.",
+          "questions": [
+            {
+              "questionNumber": 11,
+              "type": "matching-dialogue-image",
+              "audioScript": "男: 你看见我的小猫了吗？ (Nǐ kànjiàn wǒ de xiǎo māo le ma?) 女: 在那儿，在椅子上。 (Zài nàr, zài yǐzi shàng.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "D"
+            },
+            {
+              "questionNumber": 12,
+              "type": "matching-dialogue-image",
+              "audioScript": "女: 我们中午去买，好吗？ (Wǒmen zhōngwǔ qù mǎi, hǎo ma?) 男: 你看，我没钱了。 (Nǐ kàn, wǒ méi qián le.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "B"
+            },
+            {
+              "questionNumber": 13,
+              "type": "matching-dialogue-image",
+              "audioScript": "男: 你住在哪儿？ (Nǐ zhù zài nǎr?) 女: 我和妈妈都住在一零二。 (Wǒ hé māma dōu zhù zài yī líng èr.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "A"
+            },
+            {
+              "questionNumber": 14,
+              "type": "matching-dialogue-image",
+              "audioScript": "女: 这个汉字怎么读？ (Zhège Hànzì zěnme dú?) 男: 对不起，我不会。 (Duìbuqǐ, wǒ bú huì.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "E"
+            },
+            {
+              "questionNumber": 15,
+              "type": "matching-dialogue-image",
+              "audioScript": "男: 谢谢你们！ (Xièxie nǐmen!) 女: 不客气。再见。 (Bú kèqi. Zàijiàn.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "F"
+            }
+          ]
+        },
+        "part4": {
+          "title": "第四部分",
+          "instructions": "For questions 16-20, listen to the statement, then listen to the question and choose the best answer (A, B, or C). Each item will be played twice.",
+          "questions": [
+            {
+              "questionNumber": 16,
+              "type": "multiple-choice-passage",
+              "audioScript": "Statement: 我的电脑在他的桌子上。 (Wǒ de diànnǎo zài tā de zhuōzi shàng.) Question: 那是谁的电脑？ (Nà shì shéi de diànnǎo?)",
+              "options": {
+                "A": "他的 (tā de)",
+                "B": "我的 (wǒ de)",
+                "C": "同学的 (tóngxué de)"
+              },
+              "answer": "B"
+            },
+            {
+              "questionNumber": 17,
+              "type": "multiple-choice-passage",
+              "audioScript": "Statement: 今天星期四，我们明天去看电影。 (Jīntiān xīngqīsì, wǒmen míngtiān qù kàn diànyǐng.) Question: 我们什么时候去看电影？ (Wǒmen shénme shíhou qù kàn diànyǐng?)",
+              "options": {
+                "A": "星期三 (xīngqīsān)",
+                "B": "星期五 (xīngqīwǔ)",
+                "C": "星期六 (xīngqīliù)"
+              },
+              "answer": "B"
+            },
+            {
+              "questionNumber": 18,
+              "type": "multiple-choice-passage",
+              "audioScript": "Statement: 他是老师，他有50个学生。 (Tā shì lǎoshī, tā yǒu 50 ge xuéshēng.) Question: 他有多少个学生？ (Tā yǒu duōshao ge xuéshēng?)",
+              "options": {
+                "A": "5",
+                "B": "15",
+                "C": "50"
+              },
+              "answer": "C"
+            },
+            {
+              "questionNumber": 19,
+              "type": "multiple-choice-passage",
+              "audioScript": "Statement: 小姐，你好，你这儿有杯子吗？ (Xiǎojiě, nǐ hǎo, nǐ zhèr yǒu bēizi ma?) Question: 他想买什么？ (Tā xiǎng mǎi shénme?)",
+              "options": {
+                "A": "茶 (chá)",
+                "B": "苹果 (píngguǒ)",
+                "C": "杯子 (bēizi)"
+              },
+              "answer": "C"
+            },
+            {
+              "questionNumber": 20,
+              "type": "multiple-choice-passage",
+              "audioScript": "Statement: 这是你的朋友吗？很漂亮。 (Zhè shì nǐ de péngyou ma? Hěn piàoliang.) Question: 朋友怎么样？ (Péngyou zěnmeyàng?)",
+              "options": {
+                "A": "爱学习 (ài xuéxí)",
+                "B": "很漂亮 (hěn piàoliang)",
+                "C": "想回家 (xiǎng huí jiā)"
+              },
+              "answer": "B"
+            }
+          ]
+        }
+      }
+    },
+    "reading": {
+      "title": "阅读",
+      "parts": {
+        "part1": {
+          "title": "第一部分",
+          "instructions": "For questions 21-25, decide if the word matches the image (True √ or False X).",
+          "questions": [
+            {
+              "questionNumber": 21,
+              "type": "true-false-image",
+              "prompt": "写 (xiě)",
+              "answer": ""
+            },
+            {
+              "questionNumber": 22,
+              "type": "true-false-image",
+              "prompt": "听 (tīng)",
+              "answer": ""
+            },
+            {
+              "questionNumber": 23,
+              "type": "true-false-image",
+              "prompt": "菜 (cài)",
+              "answer": "X"
+            },
+            {
+              "questionNumber": 24,
+              "type": "true-false-image",
+              "prompt": "他 (tā)",
+              "answer": "X"
+            },
+            {
+              "questionNumber": 25,
+              "type": "true-false-image",
+              "prompt": "狗 (gǒu)",
+              "answer": "√"
+            }
+          ]
+        },
+        "part2": {
+          "title": "第二部分",
+          "instructions": "For questions 26-30, match the sentence to the correct image (A-F).",
+          "questions": [
+            {
+              "questionNumber": 26,
+              "type": "matching-sentence-image",
+              "prompt": "你好，我能吃一块儿吗？ (Nǐ hǎo, wǒ néng chī yí kuàir ma?)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "D"
+            },
+            {
+              "questionNumber": 27,
+              "type": "matching-sentence-image",
+              "prompt": "她们在买衣服呢。 (Tāmen zài mǎi yīfu ne.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "F"
+            },
+            {
+              "questionNumber": 28,
+              "type": "matching-sentence-image",
+              "prompt": "天气太热了，多吃些水果。 (Tiānqì tài rè le, duō chī xiē shuǐguǒ.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "C"
+            },
+            {
+              "questionNumber": 29,
+              "type": "matching-sentence-image",
+              "prompt": "来，我们看看里面是什么东西。 (Lái, wǒmen kànkan lǐmiàn shì shénme dōngxi.)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "A"
+            },
+            {
+              "questionNumber": 30,
+              "type": "matching-sentence-image",
+              "prompt": "喂，你睡觉了吗？ (Wéi, nǐ shuìjiào le ma?)",
+              "options": ["A", "B", "C", "D", "E", "F"],
+              "answer": "B"
+            }
+          ]
+        },
+        "part3": {
+          "title": "第三部分",
+          "instructions": "For questions 31-35, match the question to the correct response (A-F).",
+          "options": {
+            "A": "医院。 (Yīyuàn.)",
+            "B": "下雨了。 (Xià yǔ le.)",
+            "C": "我不认识她。 (Wǒ bú rènshi tā.)",
+            "D": "7岁。 (7 suì.)",
+            "E": "下个月。 (Xià ge yuè.)",
+            "F": "好的，谢谢！ (Hǎo de, xièxie!)"
+          },
+          "questions": [
+            {
+              "questionNumber": 31,
+              "type": "matching-question-answer",
+              "prompt": "那个人是谁？ (Nàge rén shì shéi?)",
+              "answer": "C"
+            },
+            {
+              "questionNumber": 32,
+              "type": "matching-question-answer",
+              "prompt": "他女儿多大了？ (Tā nǚ'ér duō dà le?)",
+              "answer": "D"
+            },
+            {
+              "questionNumber": 33,
+              "type": "matching-question-answer",
+              "prompt": "你的同学在哪儿工作？ (Nǐ de tóngxué zài nǎr gōngzuò?)",
+              "answer": "A"
+            },
+            {
+              "questionNumber": 34,
+              "type": "matching-question-answer",
+              "prompt": "昨天上午天气怎么样？ (Zuótiān shàngwǔ tiānqì zěnmeyàng?)",
+              "answer": "B"
+            },
+            {
+              "questionNumber": 35,
+              "type": "matching-question-answer",
+              "prompt": "爸爸什么时候来北京呢？ (Bàba shénme shíhou lái Běijīng ne?)",
+              "answer": "E"
+            }
+          ]
+        },
+        "part4": {
+          "title": "第四部分",
+          "instructions": "For questions 36-40, choose the best word (A-F) to complete the sentence.",
+          "options": {
+            "A": "坐 (zuò)",
+            "B": "前面 (qiánmiàn)",
+            "C": "没关系 (méi guānxi)",
+            "D": "名字 (míngzi)",
+            "E": "汉语 (Hànyǔ)",
+            "F": "月 (yuè)"
+          },
+          "questions": [
+            {
+              "questionNumber": 36,
+              "type": "fill-in-the-blank",
+              "prompt": "昨天是8 ( ) 19日。 (Zuótiān shì 8 ( ) 19 rì.)",
+              "answer": "F"
+            },
+            {
+              "questionNumber": 37,
+              "type": "fill-in-the-blank",
+              "prompt": "那个饭馆儿在火车站 ( )。 (Nàge fànguǎnr zài huǒchēzhàn ( ).)",
+              "answer": "B"
+            },
+            {
+              "questionNumber": 38,
+              "type": "fill-in-the-blank",
+              "prompt": "你会说 ( ) 吗？ (Nǐ huì shuō ( ) ma?)",
+              "answer": "E"
+            },
+            {
+              "questionNumber": 39,
+              "type": "fill-in-the-blank",
+              "prompt": "男: 你好！王先生在吗？ (Nǐ hǎo! Wáng xiānsheng zài ma?) 女: 在，请 ( )，我去叫他。 (Zài, qǐng ( ), wǒ qù jiào tā.)",
+              "answer": "A"
+            },
+            {
+              "questionNumber": 40,
+              "type": "fill-in-the-blank",
+              "prompt": "女: 对不起，我不会做饭。 (Duìbuqǐ, wǒ bú huì zuò fàn.) 男: ( )，我会。 (( ), wǒ huì.)",
+              "answer": "C"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

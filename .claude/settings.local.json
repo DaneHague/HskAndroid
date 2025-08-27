@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(copy:*)",
+      "Bash(for:*)",
+      "Bash(do cp \"C:\\Users\\daneh\\AndroidStudioProjects\\HskAndroid\\app\\src\\HskJson\\$i.json\" \"C:\\Users\\daneh\\AndroidStudioProjects\\HskAndroid\\app\\src\\main\\assets\\hsk$i.json\")",
+      "Bash(done)",
+      "Bash(ren:*)",
+      "Bash(move \"2.json\" \"hsk2.json\")",
+      "Bash(move \"3.json\" \"hsk3.json\")",
+      "Bash(move \"4.json\" \"hsk4.json\")",
+      "Bash(move \"5.json\" \"hsk5.json\")",
+      "Bash(move \"6.json\" \"hsk6.json\")",
+      "Bash(move \"7.json\" \"hsk7.json\")",
+      "Bash(./gradlew:*)",
+      "Bash(where java)",
+      "Bash(set JAVA_HOME=C:Program FilesAndroidAndroid Studiojbr)",
+      "Bash(gradlew:*)",
+      "Bash(.gradlew.bat --stop)",
+      "Bash(cmd /c:*)",
+      "Bash(powershell:*)",
+      "Bash(echo $SHELL)",
+      "Bash(export JAVA_HOME=\"/c/Program Files/Android/Android Studio/jbr\")"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\Users\\daneh\\.gradle\\caches"
+    ]
+  }
+}
