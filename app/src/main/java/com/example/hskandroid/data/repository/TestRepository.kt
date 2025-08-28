@@ -14,7 +14,7 @@ class TestRepository(private val context: Context) {
     
     suspend fun loadTest(testFileName: String): HskTest? = withContext(Dispatchers.IO) {
         try {
-            val inputStream = context.assets.open("Hsk1Tests/$testFileName")
+            val inputStream = context.assets.open(testFileName)
             val reader = InputStreamReader(inputStream)
             gson.fromJson(reader, HskTest::class.java)
         } catch (e: Exception) {

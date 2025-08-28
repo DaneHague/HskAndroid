@@ -4,6 +4,7 @@ import android.media.MediaPlayer
 import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -23,6 +24,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.asImageBitmap
+import android.graphics.BitmapFactory
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
 import com.example.hskandroid.data.repository.TestRepository
 import com.example.hskandroid.model.*
 import com.google.gson.Gson
@@ -60,11 +65,11 @@ fun TestScreen(
     
     // Load test on launch
     LaunchedEffect(Unit) {
-        test = repository.loadTest("TestH10901.json")
+        test = repository.loadTest("Hsk1Tests/H10901/H10901.json")
         
         // Initialize media player for listening section
         try {
-            val afd = context.assets.openFd("Hsk1Tests/H10901Audio.mp3")
+            val afd = context.assets.openFd("Hsk1Tests/H10901/H10901Audio.mp3")
             mediaPlayer = MediaPlayer().apply {
                 setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                 prepareAsync()
@@ -347,7 +352,7 @@ fun TestScreen(
                                 ) {
                                     Icon(
                                         imageVector = if (isPlaying) 
-                                            Icons.Default.PauseCircle 
+                                            Icons.Default.Edit
                                         else 
                                             Icons.Default.PlayArrow,
                                         contentDescription = if (isPlaying) "Pause" else "Play",
@@ -490,6 +495,23 @@ fun QuestionCard(
     partOptions: Map<String, String>?,
     onAnswerSelected: (String) -> Unit
 ) {
+    val context = LocalContext.current
+    
+    // Load image bitmap if available
+    val imageBitmap = remember(question.imagePath) {
+        question.imagePath?.let { imagePath ->
+            try {
+                val inputStream = context.assets.open(imagePath)
+                val bitmap = BitmapFactory.decodeStream(inputStream)
+                inputStream.close()
+                bitmap?.asImageBitmap()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
+            }
+        }
+    }
+    
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -510,6 +532,45 @@ fun QuestionCard(
             )
             
             Spacer(modifier = Modifier.height(12.dp))
+            
+            // Display image if available
+            if (question.imagePath != null) {
+                if (imageBitmap != null) {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                    ) {
+                        Image(
+                            bitmap = imageBitmap,
+                            contentDescription = "Question image",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .heightIn(min = 150.dp, max = 300.dp)
+                                .padding(8.dp),
+                            contentScale = ContentScale.Fit
+                        )
+                    }
+                } else {
+                    // If image fails to load, show a placeholder or error message
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.errorContainer
+                        )
+                    ) {
+                        Text(
+                            text = "Image could not be loaded",
+                            modifier = Modifier.padding(16.dp),
+                            color = MaterialTheme.colorScheme.onErrorContainer,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+            }
             
             // Display question content based on type
             when (question.type) {

@@ -31,6 +31,7 @@ data class TestQuestion(
     val type: String,
     val audioScript: String? = null,
     val prompt: String? = null,
+    val imagePath: String? = null,
     val options: Any? = null, // Can be List<String> or Map<String, String>
     val answer: String
 )
