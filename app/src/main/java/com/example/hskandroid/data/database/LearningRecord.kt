@@ -1,4 +1,4 @@
-package com.example.hskandroid.data.database
+package com.hskmaster.app.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

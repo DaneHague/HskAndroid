@@ -1,4 +1,4 @@
-package com.example.hskandroid.data
+package com.hskmaster.app.data
 
 import android.content.Context
 

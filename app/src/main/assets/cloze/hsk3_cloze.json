@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "sentenceWithBlank": "___他很忙但是他还是来了",
+    "fullSentence": "虽然他很忙但是他还是来了",
+    "pinyin": "suī rán tā hěn máng dàn shì tā hái shì lái le",
+    "english": "Although he was busy, he still came",
+    "correctAnswer": "虽然",
+    "correctPinyin": "suī rán",
+    "options": ["虽然", "因为", "如果", "只要"]
+  },
+  {
+    "id": 2,
+    "sentenceWithBlank": "我对中国文化很___",
+    "fullSentence": "我对中国文化很感兴趣",
+    "pinyin": "wǒ duì zhōng guó wén huà hěn gǎn xìng qù",
+    "english": "I am very interested in Chinese culture",
+    "correctAnswer": "感兴趣",
+    "correctPinyin": "gǎn xìng qù",
+    "options": ["感兴趣", "了解", "熟悉", "喜欢"]
+  },
+  {
+    "id": 3,
+    "sentenceWithBlank": "请___门关上好吗",
+    "fullSentence": "请把门关上好吗",
+    "pinyin": "qǐng bǎ mén guān shàng hǎo ma",
+    "english": "Please close the door, okay?",
+    "correctAnswer": "把",
+    "correctPinyin": "bǎ",
+    "options": ["把", "被", "让", "给"]
+  },
+  {
+    "id": 4,
+    "sentenceWithBlank": "这个地方的___特别美",
+    "fullSentence": "这个地方的风景特别美",
+    "pinyin": "zhè gè dì fang de fēng jǐng tè bié měi",
+    "english": "The scenery here is especially beautiful",
+    "correctAnswer": "风景",
+    "correctPinyin": "fēng jǐng",
+    "options": ["风景", "环境", "天气", "空气"]
+  },
+  {
+    "id": 5,
+    "sentenceWithBlank": "他___老师批评了",
+    "fullSentence": "他被老师批评了",
+    "pinyin": "tā bèi lǎo shī pī píng le",
+    "english": "He was criticized by the teacher",
+    "correctAnswer": "被",
+    "correctPinyin": "bèi",
+    "options": ["被", "把", "让", "给"]
+  },
+  {
+    "id": 6,
+    "sentenceWithBlank": "___你有时间就来找我",
+    "fullSentence": "如果你有时间就来找我",
+    "pinyin": "rú guǒ nǐ yǒu shí jiān jiù lái zhǎo wǒ",
+    "english": "If you have time, come find me",
+    "correctAnswer": "如果",
+    "correctPinyin": "rú guǒ",
+    "options": ["如果", "虽然", "因为", "虽然"]
+  },
+  {
+    "id": 7,
+    "sentenceWithBlank": "我们___保护环境",
+    "fullSentence": "我们应该保护环境",
+    "pinyin": "wǒ men yīng gāi bǎo hù huán jìng",
+    "english": "We should protect the environment",
+    "correctAnswer": "应该",
+    "correctPinyin": "yīng gāi",
+    "options": ["应该", "可以", "能够", "必须"]
+  },
+  {
+    "id": 8,
+    "sentenceWithBlank": "他的性格很___",
+    "fullSentence": "他的性格很开朗",
+    "pinyin": "tā de xìng gé hěn kāi lǎng",
+    "english": "His personality is very cheerful",
+    "correctAnswer": "开朗",
+    "correctPinyin": "kāi lǎng",
+    "options": ["开朗", "安静", "认真", "着急"]
+  },
+  {
+    "id": 9,
+    "sentenceWithBlank": "这条裙子是她___做的",
+    "fullSentence": "这条裙子是她自己做的",
+    "pinyin": "zhè tiáo qún zi shì tā zì jǐ zuò de",
+    "english": "This skirt was made by herself",
+    "correctAnswer": "自己",
+    "correctPinyin": "zì jǐ",
+    "options": ["自己", "别人", "妈妈", "朋友"]
+  },
+  {
+    "id": 10,
+    "sentenceWithBlank": "我___明年去中国留学",
+    "fullSentence": "我打算明年去中国留学",
+    "pinyin": "wǒ dǎ suàn míng nián qù zhōng guó liú xué",
+    "english": "I plan to study abroad in China next year",
+    "correctAnswer": "打算",
+    "correctPinyin": "dǎ suàn",
+    "options": ["打算", "希望", "决定", "想要"]
+  },
+  {
+    "id": 11,
+    "sentenceWithBlank": "这本书我看了两___",
+    "fullSentence": "这本书我看了两遍",
+    "pinyin": "zhè běn shū wǒ kàn le liǎng biàn",
+    "english": "I read this book twice",
+    "correctAnswer": "遍",
+    "correctPinyin": "biàn",
+    "options": ["遍", "次", "本", "个"]
+  },
+  {
+    "id": 12,
+    "sentenceWithBlank": "她一边唱歌___跳舞",
+    "fullSentence": "她一边唱歌一边跳舞",
+    "pinyin": "tā yī biān chàng gē yī biān tiào wǔ",
+    "english": "She sings while dancing",
+    "correctAnswer": "一边",
+    "correctPinyin": "yī biān",
+    "options": ["一边", "一起", "一直", "一定"]
+  },
+  {
+    "id": 13,
+    "sentenceWithBlank": "我不小心把杯子___了",
+    "fullSentence": "我不小心把杯子打破了",
+    "pinyin": "wǒ bù xiǎo xīn bǎ bēi zi dǎ pò le",
+    "english": "I accidentally broke the cup",
+    "correctAnswer": "打破",
+    "correctPinyin": "dǎ pò",
+    "options": ["打破", "打开", "打扫", "打算"]
+  },
+  {
+    "id": 14,
+    "sentenceWithBlank": "这个问题我需要___一下",
+    "fullSentence": "这个问题我需要考虑一下",
+    "pinyin": "zhè gè wèn tí wǒ xū yào kǎo lǜ yī xià",
+    "english": "I need to think about this question",
+    "correctAnswer": "考虑",
+    "correctPinyin": "kǎo lǜ",
+    "options": ["考虑", "讨论", "研究", "解决"]
+  },
+  {
+    "id": 15,
+    "sentenceWithBlank": "他对每个人都很___",
+    "fullSentence": "他对每个人都很热情",
+    "pinyin": "tā duì měi gè rén dōu hěn rè qíng",
+    "english": "He is very warm to everyone",
+    "correctAnswer": "热情",
+    "correctPinyin": "rè qíng",
+    "options": ["热情", "客气", "礼貌", "友好"]
+  },
+  {
+    "id": 16,
+    "sentenceWithBlank": "你最好___预约",
+    "fullSentence": "你最好提前预约",
+    "pinyin": "nǐ zuì hǎo tí qián yù yuē",
+    "english": "You'd better make a reservation in advance",
+    "correctAnswer": "提前",
+    "correctPinyin": "tí qián",
+    "options": ["提前", "马上", "立刻", "已经"]
+  },
+  {
+    "id": 17,
+    "sentenceWithBlank": "我___完成了这个任务",
+    "fullSentence": "我终于完成了这个任务",
+    "pinyin": "wǒ zhōng yú wán chéng le zhè gè rèn wù",
+    "english": "I finally completed this task",
+    "correctAnswer": "终于",
+    "correctPinyin": "zhōng yú",
+    "options": ["终于", "已经", "刚才", "马上"]
+  },
+  {
+    "id": 18,
+    "sentenceWithBlank": "这个消息___我很惊讶",
+    "fullSentence": "这个消息让我很惊讶",
+    "pinyin": "zhè gè xiāo xi ràng wǒ hěn jīng yà",
+    "english": "This news surprised me",
+    "correctAnswer": "让",
+    "correctPinyin": "ràng",
+    "options": ["让", "使", "把", "被"]
+  },
+  {
+    "id": 19,
+    "sentenceWithBlank": "他不但会说英语___会说法语",
+    "fullSentence": "他不但会说英语而且会说法语",
+    "pinyin": "tā bú dàn huì shuō yīng yǔ ér qiě huì shuō fǎ yǔ",
+    "english": "He can speak not only English but also French",
+    "correctAnswer": "而且",
+    "correctPinyin": "ér qiě",
+    "options": ["而且", "但是", "可是", "所以"]
+  },
+  {
+    "id": 20,
+    "sentenceWithBlank": "我们___按时完成工作",
+    "fullSentence": "我们必须按时完成工作",
+    "pinyin": "wǒ men bì xū àn shí wán chéng gōng zuò",
+    "english": "We must finish the work on time",
+    "correctAnswer": "必须",
+    "correctPinyin": "bì xū",
+    "options": ["必须", "应该", "可以", "需要"]
+  },
+  {
+    "id": 21,
+    "sentenceWithBlank": "这件事情跟他没有___",
+    "fullSentence": "这件事情跟他没有关系",
+    "pinyin": "zhè jiàn shì qíng gēn tā méi yǒu guān xi",
+    "english": "This matter has nothing to do with him",
+    "correctAnswer": "关系",
+    "correctPinyin": "guān xi",
+    "options": ["关系", "问题", "影响", "联系"]
+  },
+  {
+    "id": 22,
+    "sentenceWithBlank": "他们正在___这个计划",
+    "fullSentence": "他们正在讨论这个计划",
+    "pinyin": "tā men zhèng zài tǎo lùn zhè gè jì huà",
+    "english": "They are discussing this plan",
+    "correctAnswer": "讨论",
+    "correctPinyin": "tǎo lùn",
+    "options": ["讨论", "研究", "考虑", "决定"]
+  },
+  {
+    "id": 23,
+    "sentenceWithBlank": "你应该___身体健康",
+    "fullSentence": "你应该注意身体健康",
+    "pinyin": "nǐ yīng gāi zhù yì shēn tǐ jiàn kāng",
+    "english": "You should pay attention to your health",
+    "correctAnswer": "注意",
+    "correctPinyin": "zhù yì",
+    "options": ["注意", "关心", "照顾", "保护"]
+  },
+  {
+    "id": 24,
+    "sentenceWithBlank": "___他以外大家都来了",
+    "fullSentence": "除了他以外大家都来了",
+    "pinyin": "chú le tā yǐ wài dà jiā dōu lái le",
+    "english": "Everyone came except him",
+    "correctAnswer": "除了",
+    "correctPinyin": "chú le",
+    "options": ["除了", "只有", "就是", "不是"]
+  },
+  {
+    "id": 25,
+    "sentenceWithBlank": "我不太___这个情况",
+    "fullSentence": "我不太了解这个情况",
+    "pinyin": "wǒ bú tài liǎo jiě zhè gè qíng kuàng",
+    "english": "I don't really understand this situation",
+    "correctAnswer": "了解",
+    "correctPinyin": "liǎo jiě",
+    "options": ["了解", "知道", "明白", "清楚"]
+  }
+]

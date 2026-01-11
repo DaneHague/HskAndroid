@@ -1,4 +1,4 @@
-package com.example.hskandroid.model
+package com.hskmaster.app.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui.components
+package com.hskmaster.app.ui.components
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas

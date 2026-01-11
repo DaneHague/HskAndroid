@@ -1,17 +1,23 @@
-package com.example.hskandroid.data.database
+package com.hskmaster.app.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.hskmaster.app.data.TestAttemptEntity
+import com.hskmaster.app.data.TestAttemptDao
+import com.hskmaster.app.data.Converters
 
 @Database(
-    entities = [LearningRecord::class],
-    version = 1,
+    entities = [LearningRecord::class, TestAttemptEntity::class],
+    version = 2,
     exportSchema = false
 )
+@TypeConverters(Converters::class)
 abstract class HskDatabase : RoomDatabase() {
     abstract fun learningRecordDao(): LearningRecordDao
+    abstract fun testAttemptDao(): TestAttemptDao
     
     companion object {
         @Volatile
@@ -23,7 +29,8 @@ abstract class HskDatabase : RoomDatabase() {
                     context.applicationContext,
                     HskDatabase::class.java,
                     "hsk_database"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                .build()
                 INSTANCE = instance
                 instance
             }

@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.*
@@ -23,10 +23,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.hskandroid.data.VocabularyLoader
-import com.example.hskandroid.data.database.*
-import com.example.hskandroid.data.repository.LearningRepository
-import com.example.hskandroid.ui.components.DonutChart
+import com.hskmaster.app.data.VocabularyLoader
+import com.hskmaster.app.data.database.*
+import com.hskmaster.app.data.repository.LearningRepository
+import com.hskmaster.app.ui.components.DonutChart
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -305,6 +305,21 @@ fun HistoryTab(
                 onClick = { onFilterGameTypeChange("listening") },
                 label = { Text("Listening") }
             )
+            FilterChip(
+                selected = filterGameType == "sentence_builder",
+                onClick = { onFilterGameTypeChange("sentence_builder") },
+                label = { Text("Sentence") }
+            )
+            FilterChip(
+                selected = filterGameType == "speed_challenge",
+                onClick = { onFilterGameTypeChange("speed_challenge") },
+                label = { Text("Speed") }
+            )
+            FilterChip(
+                selected = filterGameType == "fill_blank",
+                onClick = { onFilterGameTypeChange("fill_blank") },
+                label = { Text("Fill Blank") }
+            )
         }
         
         Row(
@@ -362,10 +377,13 @@ fun HistoryTab(
 fun RecordCard(record: LearningRecord) {
     val dateFormat = SimpleDateFormat("MMM dd, HH:mm", Locale.getDefault())
     val gameColor = when (record.gameType) {
-        "matching" -> Color(0xFF4CAF50)
-        "quiz" -> Color(0xFFFF9800)
+        "matching" -> Color(0xFFFF9800)
+        "quiz" -> Color(0xFF4CAF50)
         "writing" -> Color(0xFF9C27B0)
         "listening" -> Color(0xFF00BCD4)
+        "sentence_builder" -> Color(0xFF673AB7)
+        "speed_challenge" -> Color(0xFFFF5722)
+        "fill_blank" -> Color(0xFF795548)
         else -> MaterialTheme.colorScheme.primary
     }
     
@@ -435,9 +453,15 @@ fun RecordCard(record: LearningRecord) {
                     modifier = Modifier.padding(top = 4.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                    val gameDisplayName = when (record.gameType) {
+                        "sentence_builder" -> "Sentence"
+                        "speed_challenge" -> "Speed"
+                        "fill_blank" -> "Fill Blank"
+                        else -> record.gameType.replaceFirstChar { it.uppercase() }
+                    }
                     AssistChip(
                         onClick = { },
-                        label = { Text(record.gameType.replaceFirstChar { it.uppercase() }, fontSize = 10.sp) },
+                        label = { Text(gameDisplayName, fontSize = 10.sp) },
                         modifier = Modifier.height(24.dp),
                         colors = AssistChipDefaults.assistChipColors(
                             containerColor = gameColor.copy(alpha = 0.2f)
@@ -633,10 +657,13 @@ fun StatItem(
 @Composable
 fun GameStatsCard(gameType: String, stats: GameStats) {
     val gameColor = when (gameType) {
-        "matching" -> Color(0xFF4CAF50)
-        "quiz" -> Color(0xFFFF9800)
+        "matching" -> Color(0xFFFF9800)
+        "quiz" -> Color(0xFF4CAF50)
         "writing" -> Color(0xFF9C27B0)
         "listening" -> Color(0xFF00BCD4)
+        "sentence_builder" -> Color(0xFF673AB7)
+        "speed_challenge" -> Color(0xFFFF5722)
+        "fill_blank" -> Color(0xFF795548)
         else -> MaterialTheme.colorScheme.primary
     }
     
@@ -658,11 +685,14 @@ fun GameStatsCard(gameType: String, stats: GameStats) {
             ) {
                 Icon(
                     imageVector = when (gameType) {
-                        "matching" -> Icons.Default.CheckCircle
-                        "quiz" -> Icons.Default.Edit
-                        "writing" -> Icons.Default.Create
-                        "listening" -> Icons.Default.Phone
-                        else -> Icons.Default.PlayArrow
+                        "matching" -> Icons.Default.DateRange
+                        "quiz" -> Icons.Default.CheckCircle
+                        "writing" -> Icons.Default.Edit
+                        "listening" -> Icons.Default.PlayArrow
+                        "sentence_builder" -> Icons.Default.Create
+                        "speed_challenge" -> Icons.Default.Favorite
+                        "fill_blank" -> Icons.Default.Edit
+                        else -> Icons.Default.Star
                     },
                     contentDescription = null,
                     tint = gameColor,
@@ -675,8 +705,14 @@ fun GameStatsCard(gameType: String, stats: GameStats) {
             Column(
                 modifier = Modifier.weight(1f)
             ) {
+                val displayName = when (gameType) {
+                    "sentence_builder" -> "Sentence Builder"
+                    "speed_challenge" -> "Speed Challenge"
+                    "fill_blank" -> "Fill in the Blank"
+                    else -> gameType.replaceFirstChar { it.uppercase() }
+                }
                 Text(
-                    text = gameType.replaceFirstChar { it.uppercase() },
+                    text = displayName,
                     fontWeight = FontWeight.Bold
                 )
                 Text(

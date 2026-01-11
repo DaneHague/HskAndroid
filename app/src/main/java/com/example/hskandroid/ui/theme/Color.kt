@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui.theme
+package com.hskmaster.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

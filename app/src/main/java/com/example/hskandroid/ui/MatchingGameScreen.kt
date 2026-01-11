@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,8 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.hskandroid.data.repository.LearningRepository
-import com.example.hskandroid.model.HskWord
+import com.hskmaster.app.data.repository.LearningRepository
+import com.hskmaster.app.model.SimpleHskWord
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -29,7 +29,7 @@ data class GameCard(
     val content: String,
     val type: CardType,
     val wordId: String,
-    val word: HskWord? = null
+    val word: SimpleHskWord? = null
 )
 
 enum class CardType {
@@ -40,7 +40,7 @@ enum class CardType {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MatchingGameScreen(
-    vocabulary: List<HskWord>,
+    vocabulary: List<SimpleHskWord>,
     hskLevel: Int = 1,
     onBackPressed: (() -> Unit)? = null,
     modifier: Modifier = Modifier
@@ -66,17 +66,17 @@ fun MatchingGameScreen(
     val gameCards = remember(wordsToUse, gameKey) {
         val cards = mutableListOf<GameCard>()
         wordsToUse.forEach { word ->
-            val wordId = word.simplified
+            val wordId = word.chinese
             cards.add(GameCard(
                 id = "${wordId}_char",
-                content = word.simplified,
+                content = word.chinese,
                 type = CardType.CHARACTER,
                 wordId = wordId,
                 word = word
             ))
             cards.add(GameCard(
                 id = "${wordId}_pinyin",
-                content = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                content = word.pinyin,
                 type = CardType.PINYIN,
                 wordId = wordId,
                 word = word

@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "sentenceWithBlank": "我___吃苹果",
+    "fullSentence": "我喜欢吃苹果",
+    "pinyin": "wǒ xǐ huan chī píng guǒ",
+    "english": "I like to eat apples",
+    "correctAnswer": "喜欢",
+    "correctPinyin": "xǐ huan",
+    "options": ["想", "喜欢", "要", "会"]
+  },
+  {
+    "id": 2,
+    "sentenceWithBlank": "他___我的朋友",
+    "fullSentence": "他是我的朋友",
+    "pinyin": "tā shì wǒ de péng you",
+    "english": "He is my friend",
+    "correctAnswer": "是",
+    "correctPinyin": "shì",
+    "options": ["是", "有", "在", "去"]
+  },
+  {
+    "id": 3,
+    "sentenceWithBlank": "今天天气很___",
+    "fullSentence": "今天天气很好",
+    "pinyin": "jīn tiān tiān qì hěn hǎo",
+    "english": "The weather is very good today",
+    "correctAnswer": "好",
+    "correctPinyin": "hǎo",
+    "options": ["好", "大", "小", "多"]
+  },
+  {
+    "id": 4,
+    "sentenceWithBlank": "我想___水",
+    "fullSentence": "我想喝水",
+    "pinyin": "wǒ xiǎng hē shuǐ",
+    "english": "I want to drink water",
+    "correctAnswer": "喝",
+    "correctPinyin": "hē",
+    "options": ["吃", "喝", "看", "听"]
+  },
+  {
+    "id": 5,
+    "sentenceWithBlank": "她会___中文",
+    "fullSentence": "她会说中文",
+    "pinyin": "tā huì shuō zhōng wén",
+    "english": "She can speak Chinese",
+    "correctAnswer": "说",
+    "correctPinyin": "shuō",
+    "options": ["说", "写", "读", "听"]
+  },
+  {
+    "id": 6,
+    "sentenceWithBlank": "我们去___",
+    "fullSentence": "我们去学校",
+    "pinyin": "wǒ men qù xué xiào",
+    "english": "We go to school",
+    "correctAnswer": "学校",
+    "correctPinyin": "xué xiào",
+    "options": ["学校", "医院", "饭店", "商店"]
+  },
+  {
+    "id": 7,
+    "sentenceWithBlank": "你叫___名字",
+    "fullSentence": "你叫什么名字",
+    "pinyin": "nǐ jiào shén me míng zi",
+    "english": "What is your name?",
+    "correctAnswer": "什么",
+    "correctPinyin": "shén me",
+    "options": ["什么", "哪个", "谁", "怎么"]
+  },
+  {
+    "id": 8,
+    "sentenceWithBlank": "我爸爸___家",
+    "fullSentence": "我爸爸在家",
+    "pinyin": "wǒ bà ba zài jiā",
+    "english": "My father is at home",
+    "correctAnswer": "在",
+    "correctPinyin": "zài",
+    "options": ["在", "是", "有", "去"]
+  },
+  {
+    "id": 9,
+    "sentenceWithBlank": "现在___点了",
+    "fullSentence": "现在几点了",
+    "pinyin": "xiàn zài jǐ diǎn le",
+    "english": "What time is it now?",
+    "correctAnswer": "几",
+    "correctPinyin": "jǐ",
+    "options": ["几", "多", "什么", "哪"]
+  },
+  {
+    "id": 10,
+    "sentenceWithBlank": "我住___北京",
+    "fullSentence": "我住在北京",
+    "pinyin": "wǒ zhù zài běi jīng",
+    "english": "I live in Beijing",
+    "correctAnswer": "在",
+    "correctPinyin": "zài",
+    "options": ["在", "到", "去", "来"]
+  },
+  {
+    "id": 11,
+    "sentenceWithBlank": "这本书很___",
+    "fullSentence": "这本书很好看",
+    "pinyin": "zhè běn shū hěn hǎo kàn",
+    "english": "This book is very interesting",
+    "correctAnswer": "好看",
+    "correctPinyin": "hǎo kàn",
+    "options": ["好看", "好吃", "好听", "好玩"]
+  },
+  {
+    "id": 12,
+    "sentenceWithBlank": "我妈妈___饭",
+    "fullSentence": "我妈妈做饭",
+    "pinyin": "wǒ mā ma zuò fàn",
+    "english": "My mother cooks",
+    "correctAnswer": "做",
+    "correctPinyin": "zuò",
+    "options": ["做", "吃", "买", "看"]
+  },
+  {
+    "id": 13,
+    "sentenceWithBlank": "他们是___",
+    "fullSentence": "他们是学生",
+    "pinyin": "tā men shì xué sheng",
+    "english": "They are students",
+    "correctAnswer": "学生",
+    "correctPinyin": "xué sheng",
+    "options": ["学生", "老师", "医生", "朋友"]
+  },
+  {
+    "id": 14,
+    "sentenceWithBlank": "我___一个儿子",
+    "fullSentence": "我有一个儿子",
+    "pinyin": "wǒ yǒu yī gè ér zi",
+    "english": "I have a son",
+    "correctAnswer": "有",
+    "correctPinyin": "yǒu",
+    "options": ["有", "是", "在", "要"]
+  },
+  {
+    "id": 15,
+    "sentenceWithBlank": "她买了一些___",
+    "fullSentence": "她买了一些水果",
+    "pinyin": "tā mǎi le yī xiē shuǐ guǒ",
+    "english": "She bought some fruit",
+    "correctAnswer": "水果",
+    "correctPinyin": "shuǐ guǒ",
+    "options": ["水果", "蔬菜", "衣服", "书"]
+  },
+  {
+    "id": 16,
+    "sentenceWithBlank": "你能看见那个___吗",
+    "fullSentence": "你能看见那个人吗",
+    "pinyin": "nǐ néng kàn jiàn nà gè rén ma",
+    "english": "Can you see that person?",
+    "correctAnswer": "人",
+    "correctPinyin": "rén",
+    "options": ["人", "车", "狗", "猫"]
+  },
+  {
+    "id": 17,
+    "sentenceWithBlank": "我的猫很___",
+    "fullSentence": "我的猫很小",
+    "pinyin": "wǒ de māo hěn xiǎo",
+    "english": "My cat is very small",
+    "correctAnswer": "小",
+    "correctPinyin": "xiǎo",
+    "options": ["小", "大", "高", "好"]
+  },
+  {
+    "id": 18,
+    "sentenceWithBlank": "请坐在___",
+    "fullSentence": "请坐在这里",
+    "pinyin": "qǐng zuò zài zhè lǐ",
+    "english": "Please sit here",
+    "correctAnswer": "这里",
+    "correctPinyin": "zhè lǐ",
+    "options": ["这里", "那里", "哪里", "前面"]
+  },
+  {
+    "id": 19,
+    "sentenceWithBlank": "明天我不___",
+    "fullSentence": "明天我不工作",
+    "pinyin": "míng tiān wǒ bù gōng zuò",
+    "english": "Tomorrow I don't work",
+    "correctAnswer": "工作",
+    "correctPinyin": "gōng zuò",
+    "options": ["工作", "学习", "睡觉", "吃饭"]
+  },
+  {
+    "id": 20,
+    "sentenceWithBlank": "他在___里",
+    "fullSentence": "他在医院里",
+    "pinyin": "tā zài yī yuàn lǐ",
+    "english": "He is in the hospital",
+    "correctAnswer": "医院",
+    "correctPinyin": "yī yuàn",
+    "options": ["医院", "学校", "家", "商店"]
+  },
+  {
+    "id": 21,
+    "sentenceWithBlank": "你吃饭了___",
+    "fullSentence": "你吃饭了吗",
+    "pinyin": "nǐ chī fàn le ma",
+    "english": "Have you eaten?",
+    "correctAnswer": "吗",
+    "correctPinyin": "ma",
+    "options": ["吗", "吧", "呢", "了"]
+  },
+  {
+    "id": 22,
+    "sentenceWithBlank": "我想___这个东西",
+    "fullSentence": "我想买这个东西",
+    "pinyin": "wǒ xiǎng mǎi zhè gè dōng xi",
+    "english": "I want to buy this thing",
+    "correctAnswer": "买",
+    "correctPinyin": "mǎi",
+    "options": ["买", "卖", "看", "要"]
+  },
+  {
+    "id": 23,
+    "sentenceWithBlank": "我的女儿很___",
+    "fullSentence": "我的女儿很漂亮",
+    "pinyin": "wǒ de nǚ ér hěn piào liang",
+    "english": "My daughter is very pretty",
+    "correctAnswer": "漂亮",
+    "correctPinyin": "piào liang",
+    "options": ["漂亮", "高", "小", "好"]
+  },
+  {
+    "id": 24,
+    "sentenceWithBlank": "你___大了",
+    "fullSentence": "你多大了",
+    "pinyin": "nǐ duō dà le",
+    "english": "How old are you?",
+    "correctAnswer": "多",
+    "correctPinyin": "duō",
+    "options": ["多", "几", "什么", "怎么"]
+  },
+  {
+    "id": 25,
+    "sentenceWithBlank": "我在___电视",
+    "fullSentence": "我在看电视",
+    "pinyin": "wǒ zài kàn diàn shì",
+    "english": "I am watching TV",
+    "correctAnswer": "看",
+    "correctPinyin": "kàn",
+    "options": ["看", "听", "读", "写"]
+  }
+]

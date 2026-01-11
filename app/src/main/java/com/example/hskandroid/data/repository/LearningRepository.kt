@@ -1,8 +1,9 @@
-package com.example.hskandroid.data.repository
+package com.hskmaster.app.data.repository
 
 import android.content.Context
-import com.example.hskandroid.data.database.*
-import com.example.hskandroid.model.HskWord
+import com.hskmaster.app.data.database.*
+import com.hskmaster.app.data.UserProgressManager
+import com.hskmaster.app.model.SimpleHskWord
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -11,10 +12,11 @@ import java.util.*
 
 class LearningRepository(context: Context) {
     private val dao = HskDatabase.getDatabase(context).learningRecordDao()
+    private val progressManager = UserProgressManager(context)
     
     suspend fun recordMatchingGame(
         hskLevel: Int,
-        word: HskWord,
+        word: SimpleHskWord,
         isCorrect: Boolean,
         responseTime: Long,
         attempts: Int
@@ -22,19 +24,26 @@ class LearningRepository(context: Context) {
         val record = LearningRecord(
             hskLevel = hskLevel,
             gameType = "matching",
-            character = word.simplified,
-            pinyin = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
-            meaning = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+            character = word.chinese,
+            pinyin = word.pinyin,
+            meaning = word.english,
             isCorrect = isCorrect,
             responseTime = responseTime,
             attempts = attempts
         )
         dao.insertRecord(record)
+
+        // Award XP
+        if (isCorrect) {
+            progressManager.addCorrectAnswerXp()
+        } else {
+            progressManager.addWrongAnswerXp()
+        }
     }
     
     suspend fun recordQuizAnswer(
         hskLevel: Int,
-        word: HskWord,
+        word: SimpleHskWord,
         isCorrect: Boolean,
         questionType: String,
         responseTime: Long
@@ -42,53 +51,149 @@ class LearningRepository(context: Context) {
         val record = LearningRecord(
             hskLevel = hskLevel,
             gameType = "quiz",
-            character = word.simplified,
-            pinyin = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
-            meaning = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+            character = word.chinese,
+            pinyin = word.pinyin,
+            meaning = word.english,
             isCorrect = isCorrect,
             responseTime = responseTime,
             questionType = questionType
         )
         dao.insertRecord(record)
+
+        // Award XP
+        if (isCorrect) {
+            progressManager.addCorrectAnswerXp()
+        } else {
+            progressManager.addWrongAnswerXp()
+        }
     }
     
     suspend fun recordWritingPractice(
         hskLevel: Int,
-        word: HskWord,
+        word: SimpleHskWord,
         hintUsed: Boolean,
         isCorrect: Boolean = true // Allow caller to specify if it was correct
     ) {
         val record = LearningRecord(
             hskLevel = hskLevel,
             gameType = "writing",
-            character = word.simplified,
-            pinyin = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
-            meaning = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+            character = word.chinese,
+            pinyin = word.pinyin,
+            meaning = word.english,
             isCorrect = isCorrect,
             hintUsed = hintUsed
         )
         dao.insertRecord(record)
+
+        // Award XP (writing practice always awards correct XP when completed)
+        progressManager.addCorrectAnswerXp()
     }
     
     suspend fun recordListeningAnswer(
         hskLevel: Int,
-        word: HskWord,
+        word: SimpleHskWord,
         isCorrect: Boolean,
         responseTime: Long
     ) {
         val record = LearningRecord(
             hskLevel = hskLevel,
             gameType = "listening",
-            character = word.simplified,
-            pinyin = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
-            meaning = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+            character = word.chinese,
+            pinyin = word.pinyin,
+            meaning = word.english,
             isCorrect = isCorrect,
             responseTime = responseTime,
             questionType = "listening"
         )
         dao.insertRecord(record)
+
+        // Award XP
+        if (isCorrect) {
+            progressManager.addCorrectAnswerXp()
+        } else {
+            progressManager.addWrongAnswerXp()
+        }
     }
-    
+
+    suspend fun recordSentenceBuilder(
+        hskLevel: Int,
+        sentenceChinese: String,
+        isCorrect: Boolean,
+        responseTime: Long,
+        attempts: Int = 1
+    ) {
+        val record = LearningRecord(
+            hskLevel = hskLevel,
+            gameType = "sentence_builder",
+            character = sentenceChinese,
+            pinyin = "",
+            meaning = "",
+            isCorrect = isCorrect,
+            responseTime = responseTime,
+            attempts = attempts,
+            questionType = "SENTENCE_ORDER"
+        )
+        dao.insertRecord(record)
+
+        // Award XP
+        if (isCorrect) {
+            progressManager.addCorrectAnswerXp()
+        } else {
+            progressManager.addWrongAnswerXp()
+        }
+    }
+
+    suspend fun recordSpeedChallenge(
+        hskLevel: Int,
+        word: SimpleHskWord,
+        isCorrect: Boolean
+    ) {
+        val record = LearningRecord(
+            hskLevel = hskLevel,
+            gameType = "speed_challenge",
+            character = word.chinese,
+            pinyin = word.pinyin,
+            meaning = word.english,
+            isCorrect = isCorrect,
+            questionType = "SPEED_REVIEW"
+        )
+        dao.insertRecord(record)
+
+        // Award XP
+        if (isCorrect) {
+            progressManager.addCorrectAnswerXp()
+        } else {
+            progressManager.addWrongAnswerXp()
+        }
+    }
+
+    suspend fun recordFillBlank(
+        hskLevel: Int,
+        sentence: String,
+        correctAnswer: String,
+        isCorrect: Boolean,
+        responseTime: Long
+    ) {
+        val record = LearningRecord(
+            hskLevel = hskLevel,
+            gameType = "fill_blank",
+            character = correctAnswer,
+            pinyin = "",
+            meaning = sentence,
+            isCorrect = isCorrect,
+            responseTime = responseTime,
+            questionType = "FILL_BLANK"
+        )
+        dao.insertRecord(record)
+
+        // Award XP
+        if (isCorrect) {
+            progressManager.addCorrectAnswerXp()
+        } else {
+            progressManager.addWrongAnswerXp()
+        }
+    }
+
     fun getAllRecords(): Flow<List<LearningRecord>> = dao.getAllRecords()
     
     fun getRecordsByLevel(level: Int): Flow<List<LearningRecord>> = dao.getRecordsByLevel(level)

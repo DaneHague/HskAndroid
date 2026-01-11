@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "sentenceWithBlank": "我每天早上___步",
+    "fullSentence": "我每天早上跑步",
+    "pinyin": "wǒ měi tiān zǎo shang pǎo bù",
+    "english": "I run every morning",
+    "correctAnswer": "跑",
+    "correctPinyin": "pǎo",
+    "options": ["跑", "走", "去", "来"]
+  },
+  {
+    "id": 2,
+    "sentenceWithBlank": "她正在___考试",
+    "fullSentence": "她正在准备考试",
+    "pinyin": "tā zhèng zài zhǔn bèi kǎo shì",
+    "english": "She is preparing for the exam",
+    "correctAnswer": "准备",
+    "correctPinyin": "zhǔn bèi",
+    "options": ["准备", "开始", "完成", "参加"]
+  },
+  {
+    "id": 3,
+    "sentenceWithBlank": "这个问题非常___",
+    "fullSentence": "这个问题非常重要",
+    "pinyin": "zhè gè wèn tí fēi cháng zhòng yào",
+    "english": "This question is very important",
+    "correctAnswer": "重要",
+    "correctPinyin": "zhòng yào",
+    "options": ["重要", "简单", "容易", "困难"]
+  },
+  {
+    "id": 4,
+    "sentenceWithBlank": "我弟弟___我高",
+    "fullSentence": "我弟弟比我高",
+    "pinyin": "wǒ dì di bǐ wǒ gāo",
+    "english": "My younger brother is taller than me",
+    "correctAnswer": "比",
+    "correctPinyin": "bǐ",
+    "options": ["比", "和", "跟", "对"]
+  },
+  {
+    "id": 5,
+    "sentenceWithBlank": "请___我拿一下那本书",
+    "fullSentence": "请帮我拿一下那本书",
+    "pinyin": "qǐng bāng wǒ ná yī xià nà běn shū",
+    "english": "Please help me get that book",
+    "correctAnswer": "帮",
+    "correctPinyin": "bāng",
+    "options": ["帮", "给", "让", "叫"]
+  },
+  {
+    "id": 6,
+    "sentenceWithBlank": "我___这个电影很好看",
+    "fullSentence": "我觉得这个电影很好看",
+    "pinyin": "wǒ jué de zhè gè diàn yǐng hěn hǎo kàn",
+    "english": "I think this movie is very good",
+    "correctAnswer": "觉得",
+    "correctPinyin": "jué de",
+    "options": ["觉得", "知道", "认为", "希望"]
+  },
+  {
+    "id": 7,
+    "sentenceWithBlank": "你可以___我怎么走吗",
+    "fullSentence": "你可以告诉我怎么走吗",
+    "pinyin": "nǐ kě yǐ gào su wǒ zěn me zǒu ma",
+    "english": "Can you tell me how to get there?",
+    "correctAnswer": "告诉",
+    "correctPinyin": "gào su",
+    "options": ["告诉", "问", "说", "教"]
+  },
+  {
+    "id": 8,
+    "sentenceWithBlank": "他们___到机场了",
+    "fullSentence": "他们已经到机场了",
+    "pinyin": "tā men yǐ jīng dào jī chǎng le",
+    "english": "They have already arrived at the airport",
+    "correctAnswer": "已经",
+    "correctPinyin": "yǐ jīng",
+    "options": ["已经", "正在", "还没", "刚才"]
+  },
+  {
+    "id": 9,
+    "sentenceWithBlank": "我的手机在桌子___",
+    "fullSentence": "我的手机在桌子上",
+    "pinyin": "wǒ de shǒu jī zài zhuō zi shàng",
+    "english": "My phone is on the table",
+    "correctAnswer": "上",
+    "correctPinyin": "shàng",
+    "options": ["上", "下", "里", "旁边"]
+  },
+  {
+    "id": 10,
+    "sentenceWithBlank": "外面开始___了",
+    "fullSentence": "外面开始下雨了",
+    "pinyin": "wài miàn kāi shǐ xià yǔ le",
+    "english": "It started raining outside",
+    "correctAnswer": "下雨",
+    "correctPinyin": "xià yǔ",
+    "options": ["下雨", "下雪", "刮风", "晴天"]
+  },
+  {
+    "id": 11,
+    "sentenceWithBlank": "我___你身体健康",
+    "fullSentence": "我希望你身体健康",
+    "pinyin": "wǒ xī wàng nǐ shēn tǐ jiàn kāng",
+    "english": "I hope you stay healthy",
+    "correctAnswer": "希望",
+    "correctPinyin": "xī wàng",
+    "options": ["希望", "觉得", "知道", "想"]
+  },
+  {
+    "id": 12,
+    "sentenceWithBlank": "这件衣服___贵了",
+    "fullSentence": "这件衣服太贵了",
+    "pinyin": "zhè jiàn yī fu tài guì le",
+    "english": "This piece of clothing is too expensive",
+    "correctAnswer": "太",
+    "correctPinyin": "tài",
+    "options": ["太", "很", "非常", "真"]
+  },
+  {
+    "id": 13,
+    "sentenceWithBlank": "我___休息一会儿",
+    "fullSentence": "我需要休息一会儿",
+    "pinyin": "wǒ xū yào xiū xi yī huìr",
+    "english": "I need to rest for a while",
+    "correctAnswer": "需要",
+    "correctPinyin": "xū yào",
+    "options": ["需要", "想要", "可以", "应该"]
+  },
+  {
+    "id": 14,
+    "sentenceWithBlank": "他每个星期去___",
+    "fullSentence": "他每个星期去游泳",
+    "pinyin": "tā měi gè xīng qī qù yóu yǒng",
+    "english": "He goes swimming every week",
+    "correctAnswer": "游泳",
+    "correctPinyin": "yóu yǒng",
+    "options": ["游泳", "跑步", "打球", "爬山"]
+  },
+  {
+    "id": 15,
+    "sentenceWithBlank": "我们___去吃饭吧",
+    "fullSentence": "我们一起去吃饭吧",
+    "pinyin": "wǒ men yī qǐ qù chī fàn ba",
+    "english": "Let's go eat together",
+    "correctAnswer": "一起",
+    "correctPinyin": "yī qǐ",
+    "options": ["一起", "一下", "一会儿", "一点"]
+  },
+  {
+    "id": 16,
+    "sentenceWithBlank": "房间里有很多___",
+    "fullSentence": "房间里有很多人",
+    "pinyin": "fáng jiān lǐ yǒu hěn duō rén",
+    "english": "There are many people in the room",
+    "correctAnswer": "人",
+    "correctPinyin": "rén",
+    "options": ["人", "书", "东西", "椅子"]
+  },
+  {
+    "id": 17,
+    "sentenceWithBlank": "你吃___中国菜吗",
+    "fullSentence": "你吃过中国菜吗",
+    "pinyin": "nǐ chī guò zhōng guó cài ma",
+    "english": "Have you ever eaten Chinese food?",
+    "correctAnswer": "过",
+    "correctPinyin": "guò",
+    "options": ["过", "了", "着", "完"]
+  },
+  {
+    "id": 18,
+    "sentenceWithBlank": "我昨天晚上没___好",
+    "fullSentence": "我昨天晚上没睡好",
+    "pinyin": "wǒ zuó tiān wǎn shang méi shuì hǎo",
+    "english": "I didn't sleep well last night",
+    "correctAnswer": "睡",
+    "correctPinyin": "shuì",
+    "options": ["睡", "吃", "喝", "玩"]
+  },
+  {
+    "id": 19,
+    "sentenceWithBlank": "请___我一下",
+    "fullSentence": "请等我一下",
+    "pinyin": "qǐng děng wǒ yī xià",
+    "english": "Please wait for me a moment",
+    "correctAnswer": "等",
+    "correctPinyin": "děng",
+    "options": ["等", "帮", "找", "问"]
+  },
+  {
+    "id": 20,
+    "sentenceWithBlank": "他的汉语说___很好",
+    "fullSentence": "他的汉语说得很好",
+    "pinyin": "tā de hàn yǔ shuō de hěn hǎo",
+    "english": "He speaks Chinese very well",
+    "correctAnswer": "得",
+    "correctPinyin": "de",
+    "options": ["得", "的", "地", "着"]
+  },
+  {
+    "id": 21,
+    "sentenceWithBlank": "我想学___中国菜",
+    "fullSentence": "我想学做中国菜",
+    "pinyin": "wǒ xiǎng xué zuò zhōng guó cài",
+    "english": "I want to learn to cook Chinese food",
+    "correctAnswer": "做",
+    "correctPinyin": "zuò",
+    "options": ["做", "吃", "买", "看"]
+  },
+  {
+    "id": 22,
+    "sentenceWithBlank": "从这里到公司要___小时",
+    "fullSentence": "从这里到公司要半小时",
+    "pinyin": "cóng zhè lǐ dào gōng sī yào bàn xiǎo shí",
+    "english": "It takes half an hour from here to the company",
+    "correctAnswer": "半",
+    "correctPinyin": "bàn",
+    "options": ["半", "一", "两", "三"]
+  },
+  {
+    "id": 23,
+    "sentenceWithBlank": "我___了带钱包",
+    "fullSentence": "我忘了带钱包",
+    "pinyin": "wǒ wàng le dài qián bāo",
+    "english": "I forgot to bring my wallet",
+    "correctAnswer": "忘",
+    "correctPinyin": "wàng",
+    "options": ["忘", "想", "记", "要"]
+  },
+  {
+    "id": 24,
+    "sentenceWithBlank": "你___他住在哪里吗",
+    "fullSentence": "你知道他住在哪里吗",
+    "pinyin": "nǐ zhī dào tā zhù zài nǎ lǐ ma",
+    "english": "Do you know where he lives?",
+    "correctAnswer": "知道",
+    "correctPinyin": "zhī dào",
+    "options": ["知道", "认识", "觉得", "希望"]
+  },
+  {
+    "id": 25,
+    "sentenceWithBlank": "明天___会下雪",
+    "fullSentence": "明天可能会下雪",
+    "pinyin": "míng tiān kě néng huì xià xuě",
+    "english": "It might snow tomorrow",
+    "correctAnswer": "可能",
+    "correctPinyin": "kě néng",
+    "options": ["可能", "一定", "应该", "必须"]
+  }
+]

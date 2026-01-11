@@ -1,0 +1,336 @@
+[
+  {
+    "id": 1,
+    "chinese": "虽然他很忙但是他还是来了",
+    "pinyin": "suī rán tā hěn máng dàn shì tā hái shì lái le",
+    "english": "Although he was busy, he still came",
+    "words": [
+      { "chinese": "虽然", "pinyin": "suī rán", "position": 0 },
+      { "chinese": "他", "pinyin": "tā", "position": 1 },
+      { "chinese": "很忙", "pinyin": "hěn máng", "position": 2 },
+      { "chinese": "但是", "pinyin": "dàn shì", "position": 3 },
+      { "chinese": "他", "pinyin": "tā", "position": 4 },
+      { "chinese": "还是", "pinyin": "hái shì", "position": 5 },
+      { "chinese": "来了", "pinyin": "lái le", "position": 6 }
+    ]
+  },
+  {
+    "id": 2,
+    "chinese": "我对中国文化很感兴趣",
+    "pinyin": "wǒ duì zhōng guó wén huà hěn gǎn xìng qù",
+    "english": "I am very interested in Chinese culture",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "对", "pinyin": "duì", "position": 1 },
+      { "chinese": "中国文化", "pinyin": "zhōng guó wén huà", "position": 2 },
+      { "chinese": "很", "pinyin": "hěn", "position": 3 },
+      { "chinese": "感兴趣", "pinyin": "gǎn xìng qù", "position": 4 }
+    ]
+  },
+  {
+    "id": 3,
+    "chinese": "请把门关上好吗",
+    "pinyin": "qǐng bǎ mén guān shàng hǎo ma",
+    "english": "Please close the door, okay?",
+    "words": [
+      { "chinese": "请", "pinyin": "qǐng", "position": 0 },
+      { "chinese": "把", "pinyin": "bǎ", "position": 1 },
+      { "chinese": "门", "pinyin": "mén", "position": 2 },
+      { "chinese": "关上", "pinyin": "guān shàng", "position": 3 },
+      { "chinese": "好吗", "pinyin": "hǎo ma", "position": 4 }
+    ]
+  },
+  {
+    "id": 4,
+    "chinese": "这个地方的风景特别美",
+    "pinyin": "zhè gè dì fang de fēng jǐng tè bié měi",
+    "english": "The scenery here is especially beautiful",
+    "words": [
+      { "chinese": "这个", "pinyin": "zhè gè", "position": 0 },
+      { "chinese": "地方", "pinyin": "dì fang", "position": 1 },
+      { "chinese": "的", "pinyin": "de", "position": 2 },
+      { "chinese": "风景", "pinyin": "fēng jǐng", "position": 3 },
+      { "chinese": "特别", "pinyin": "tè bié", "position": 4 },
+      { "chinese": "美", "pinyin": "měi", "position": 5 }
+    ]
+  },
+  {
+    "id": 5,
+    "chinese": "他被老师批评了",
+    "pinyin": "tā bèi lǎo shī pī píng le",
+    "english": "He was criticized by the teacher",
+    "words": [
+      { "chinese": "他", "pinyin": "tā", "position": 0 },
+      { "chinese": "被", "pinyin": "bèi", "position": 1 },
+      { "chinese": "老师", "pinyin": "lǎo shī", "position": 2 },
+      { "chinese": "批评", "pinyin": "pī píng", "position": 3 },
+      { "chinese": "了", "pinyin": "le", "position": 4 }
+    ]
+  },
+  {
+    "id": 6,
+    "chinese": "如果你有时间就来找我",
+    "pinyin": "rú guǒ nǐ yǒu shí jiān jiù lái zhǎo wǒ",
+    "english": "If you have time, come find me",
+    "words": [
+      { "chinese": "如果", "pinyin": "rú guǒ", "position": 0 },
+      { "chinese": "你", "pinyin": "nǐ", "position": 1 },
+      { "chinese": "有时间", "pinyin": "yǒu shí jiān", "position": 2 },
+      { "chinese": "就", "pinyin": "jiù", "position": 3 },
+      { "chinese": "来", "pinyin": "lái", "position": 4 },
+      { "chinese": "找我", "pinyin": "zhǎo wǒ", "position": 5 }
+    ]
+  },
+  {
+    "id": 7,
+    "chinese": "我们应该保护环境",
+    "pinyin": "wǒ men yīng gāi bǎo hù huán jìng",
+    "english": "We should protect the environment",
+    "words": [
+      { "chinese": "我们", "pinyin": "wǒ men", "position": 0 },
+      { "chinese": "应该", "pinyin": "yīng gāi", "position": 1 },
+      { "chinese": "保护", "pinyin": "bǎo hù", "position": 2 },
+      { "chinese": "环境", "pinyin": "huán jìng", "position": 3 }
+    ]
+  },
+  {
+    "id": 8,
+    "chinese": "他的性格很开朗",
+    "pinyin": "tā de xìng gé hěn kāi lǎng",
+    "english": "His personality is very cheerful",
+    "words": [
+      { "chinese": "他的", "pinyin": "tā de", "position": 0 },
+      { "chinese": "性格", "pinyin": "xìng gé", "position": 1 },
+      { "chinese": "很", "pinyin": "hěn", "position": 2 },
+      { "chinese": "开朗", "pinyin": "kāi lǎng", "position": 3 }
+    ]
+  },
+  {
+    "id": 9,
+    "chinese": "这条裙子是她自己做的",
+    "pinyin": "zhè tiáo qún zi shì tā zì jǐ zuò de",
+    "english": "This skirt was made by herself",
+    "words": [
+      { "chinese": "这条", "pinyin": "zhè tiáo", "position": 0 },
+      { "chinese": "裙子", "pinyin": "qún zi", "position": 1 },
+      { "chinese": "是", "pinyin": "shì", "position": 2 },
+      { "chinese": "她", "pinyin": "tā", "position": 3 },
+      { "chinese": "自己", "pinyin": "zì jǐ", "position": 4 },
+      { "chinese": "做的", "pinyin": "zuò de", "position": 5 }
+    ]
+  },
+  {
+    "id": 10,
+    "chinese": "我打算明年去中国留学",
+    "pinyin": "wǒ dǎ suàn míng nián qù zhōng guó liú xué",
+    "english": "I plan to study abroad in China next year",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "打算", "pinyin": "dǎ suàn", "position": 1 },
+      { "chinese": "明年", "pinyin": "míng nián", "position": 2 },
+      { "chinese": "去", "pinyin": "qù", "position": 3 },
+      { "chinese": "中国", "pinyin": "zhōng guó", "position": 4 },
+      { "chinese": "留学", "pinyin": "liú xué", "position": 5 }
+    ]
+  },
+  {
+    "id": 11,
+    "chinese": "这本书我看了两遍",
+    "pinyin": "zhè běn shū wǒ kàn le liǎng biàn",
+    "english": "I read this book twice",
+    "words": [
+      { "chinese": "这本书", "pinyin": "zhè běn shū", "position": 0 },
+      { "chinese": "我", "pinyin": "wǒ", "position": 1 },
+      { "chinese": "看了", "pinyin": "kàn le", "position": 2 },
+      { "chinese": "两遍", "pinyin": "liǎng biàn", "position": 3 }
+    ]
+  },
+  {
+    "id": 12,
+    "chinese": "她一边唱歌一边跳舞",
+    "pinyin": "tā yī biān chàng gē yī biān tiào wǔ",
+    "english": "She sings while dancing",
+    "words": [
+      { "chinese": "她", "pinyin": "tā", "position": 0 },
+      { "chinese": "一边", "pinyin": "yī biān", "position": 1 },
+      { "chinese": "唱歌", "pinyin": "chàng gē", "position": 2 },
+      { "chinese": "一边", "pinyin": "yī biān", "position": 3 },
+      { "chinese": "跳舞", "pinyin": "tiào wǔ", "position": 4 }
+    ]
+  },
+  {
+    "id": 13,
+    "chinese": "我不小心把杯子打破了",
+    "pinyin": "wǒ bù xiǎo xīn bǎ bēi zi dǎ pò le",
+    "english": "I accidentally broke the cup",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "不小心", "pinyin": "bù xiǎo xīn", "position": 1 },
+      { "chinese": "把", "pinyin": "bǎ", "position": 2 },
+      { "chinese": "杯子", "pinyin": "bēi zi", "position": 3 },
+      { "chinese": "打破了", "pinyin": "dǎ pò le", "position": 4 }
+    ]
+  },
+  {
+    "id": 14,
+    "chinese": "这个问题我需要考虑一下",
+    "pinyin": "zhè gè wèn tí wǒ xū yào kǎo lǜ yī xià",
+    "english": "I need to think about this question",
+    "words": [
+      { "chinese": "这个", "pinyin": "zhè gè", "position": 0 },
+      { "chinese": "问题", "pinyin": "wèn tí", "position": 1 },
+      { "chinese": "我", "pinyin": "wǒ", "position": 2 },
+      { "chinese": "需要", "pinyin": "xū yào", "position": 3 },
+      { "chinese": "考虑", "pinyin": "kǎo lǜ", "position": 4 },
+      { "chinese": "一下", "pinyin": "yī xià", "position": 5 }
+    ]
+  },
+  {
+    "id": 15,
+    "chinese": "他对每个人都很热情",
+    "pinyin": "tā duì měi gè rén dōu hěn rè qíng",
+    "english": "He is very warm to everyone",
+    "words": [
+      { "chinese": "他", "pinyin": "tā", "position": 0 },
+      { "chinese": "对", "pinyin": "duì", "position": 1 },
+      { "chinese": "每个人", "pinyin": "měi gè rén", "position": 2 },
+      { "chinese": "都", "pinyin": "dōu", "position": 3 },
+      { "chinese": "很", "pinyin": "hěn", "position": 4 },
+      { "chinese": "热情", "pinyin": "rè qíng", "position": 5 }
+    ]
+  },
+  {
+    "id": 16,
+    "chinese": "你最好提前预约",
+    "pinyin": "nǐ zuì hǎo tí qián yù yuē",
+    "english": "You'd better make a reservation in advance",
+    "words": [
+      { "chinese": "你", "pinyin": "nǐ", "position": 0 },
+      { "chinese": "最好", "pinyin": "zuì hǎo", "position": 1 },
+      { "chinese": "提前", "pinyin": "tí qián", "position": 2 },
+      { "chinese": "预约", "pinyin": "yù yuē", "position": 3 }
+    ]
+  },
+  {
+    "id": 17,
+    "chinese": "我终于完成了这个任务",
+    "pinyin": "wǒ zhōng yú wán chéng le zhè gè rèn wù",
+    "english": "I finally completed this task",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "终于", "pinyin": "zhōng yú", "position": 1 },
+      { "chinese": "完成了", "pinyin": "wán chéng le", "position": 2 },
+      { "chinese": "这个", "pinyin": "zhè gè", "position": 3 },
+      { "chinese": "任务", "pinyin": "rèn wù", "position": 4 }
+    ]
+  },
+  {
+    "id": 18,
+    "chinese": "这个消息让我很惊讶",
+    "pinyin": "zhè gè xiāo xi ràng wǒ hěn jīng yà",
+    "english": "This news surprised me",
+    "words": [
+      { "chinese": "这个", "pinyin": "zhè gè", "position": 0 },
+      { "chinese": "消息", "pinyin": "xiāo xi", "position": 1 },
+      { "chinese": "让", "pinyin": "ràng", "position": 2 },
+      { "chinese": "我", "pinyin": "wǒ", "position": 3 },
+      { "chinese": "很", "pinyin": "hěn", "position": 4 },
+      { "chinese": "惊讶", "pinyin": "jīng yà", "position": 5 }
+    ]
+  },
+  {
+    "id": 19,
+    "chinese": "他不但会说英语而且会说法语",
+    "pinyin": "tā bú dàn huì shuō yīng yǔ ér qiě huì shuō fǎ yǔ",
+    "english": "He can speak not only English but also French",
+    "words": [
+      { "chinese": "他", "pinyin": "tā", "position": 0 },
+      { "chinese": "不但", "pinyin": "bú dàn", "position": 1 },
+      { "chinese": "会说", "pinyin": "huì shuō", "position": 2 },
+      { "chinese": "英语", "pinyin": "yīng yǔ", "position": 3 },
+      { "chinese": "而且", "pinyin": "ér qiě", "position": 4 },
+      { "chinese": "会说", "pinyin": "huì shuō", "position": 5 },
+      { "chinese": "法语", "pinyin": "fǎ yǔ", "position": 6 }
+    ]
+  },
+  {
+    "id": 20,
+    "chinese": "我们必须按时完成工作",
+    "pinyin": "wǒ men bì xū àn shí wán chéng gōng zuò",
+    "english": "We must finish the work on time",
+    "words": [
+      { "chinese": "我们", "pinyin": "wǒ men", "position": 0 },
+      { "chinese": "必须", "pinyin": "bì xū", "position": 1 },
+      { "chinese": "按时", "pinyin": "àn shí", "position": 2 },
+      { "chinese": "完成", "pinyin": "wán chéng", "position": 3 },
+      { "chinese": "工作", "pinyin": "gōng zuò", "position": 4 }
+    ]
+  },
+  {
+    "id": 21,
+    "chinese": "这件事情跟他没有关系",
+    "pinyin": "zhè jiàn shì qíng gēn tā méi yǒu guān xi",
+    "english": "This matter has nothing to do with him",
+    "words": [
+      { "chinese": "这件", "pinyin": "zhè jiàn", "position": 0 },
+      { "chinese": "事情", "pinyin": "shì qíng", "position": 1 },
+      { "chinese": "跟", "pinyin": "gēn", "position": 2 },
+      { "chinese": "他", "pinyin": "tā", "position": 3 },
+      { "chinese": "没有", "pinyin": "méi yǒu", "position": 4 },
+      { "chinese": "关系", "pinyin": "guān xi", "position": 5 }
+    ]
+  },
+  {
+    "id": 22,
+    "chinese": "他们正在讨论这个计划",
+    "pinyin": "tā men zhèng zài tǎo lùn zhè gè jì huà",
+    "english": "They are discussing this plan",
+    "words": [
+      { "chinese": "他们", "pinyin": "tā men", "position": 0 },
+      { "chinese": "正在", "pinyin": "zhèng zài", "position": 1 },
+      { "chinese": "讨论", "pinyin": "tǎo lùn", "position": 2 },
+      { "chinese": "这个", "pinyin": "zhè gè", "position": 3 },
+      { "chinese": "计划", "pinyin": "jì huà", "position": 4 }
+    ]
+  },
+  {
+    "id": 23,
+    "chinese": "你应该注意身体健康",
+    "pinyin": "nǐ yīng gāi zhù yì shēn tǐ jiàn kāng",
+    "english": "You should pay attention to your health",
+    "words": [
+      { "chinese": "你", "pinyin": "nǐ", "position": 0 },
+      { "chinese": "应该", "pinyin": "yīng gāi", "position": 1 },
+      { "chinese": "注意", "pinyin": "zhù yì", "position": 2 },
+      { "chinese": "身体", "pinyin": "shēn tǐ", "position": 3 },
+      { "chinese": "健康", "pinyin": "jiàn kāng", "position": 4 }
+    ]
+  },
+  {
+    "id": 24,
+    "chinese": "除了他以外大家都来了",
+    "pinyin": "chú le tā yǐ wài dà jiā dōu lái le",
+    "english": "Everyone came except him",
+    "words": [
+      { "chinese": "除了", "pinyin": "chú le", "position": 0 },
+      { "chinese": "他", "pinyin": "tā", "position": 1 },
+      { "chinese": "以外", "pinyin": "yǐ wài", "position": 2 },
+      { "chinese": "大家", "pinyin": "dà jiā", "position": 3 },
+      { "chinese": "都", "pinyin": "dōu", "position": 4 },
+      { "chinese": "来了", "pinyin": "lái le", "position": 5 }
+    ]
+  },
+  {
+    "id": 25,
+    "chinese": "我不太了解这个情况",
+    "pinyin": "wǒ bú tài liǎo jiě zhè gè qíng kuàng",
+    "english": "I don't really understand this situation",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "不太", "pinyin": "bú tài", "position": 1 },
+      { "chinese": "了解", "pinyin": "liǎo jiě", "position": 2 },
+      { "chinese": "这个", "pinyin": "zhè gè", "position": 3 },
+      { "chinese": "情况", "pinyin": "qíng kuàng", "position": 4 }
+    ]
+  }
+]

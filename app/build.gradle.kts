@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.hskandroid"
+    namespace = "com.hskmaster.app"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.hskandroid"
+        applicationId = "com.hskmaster.app"
         minSdk = 24
         targetSdk = 36
         versionCode = 2

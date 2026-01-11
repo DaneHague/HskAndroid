@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import android.speech.tts.TextToSpeech
 import androidx.compose.animation.*
@@ -30,8 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.hskandroid.data.repository.LearningRepository
-import com.example.hskandroid.model.HskWord
+import com.hskmaster.app.data.repository.LearningRepository
+import com.hskmaster.app.model.SimpleHskWord
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -46,7 +46,7 @@ data class DrawingPath(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WritingPracticeScreen(
-    vocabulary: List<HskWord>,
+    vocabulary: List<SimpleHskWord>,
     hskLevel: Int = 1,
     onBackPressed: (() -> Unit)? = null,
     modifier: Modifier = Modifier
@@ -104,7 +104,7 @@ fun WritingPracticeScreen(
             // Small delay to ensure UI is ready
             delay(300)
             textToSpeech?.speak(
-                currentWord.simplified,
+                currentWord.chinese,
                 TextToSpeech.QUEUE_FLUSH,
                 null,
                 "writing_character"
@@ -214,7 +214,7 @@ fun WritingPracticeScreen(
                                 onClick = {
                                     if (ttsInitialized && currentWord != null) {
                                         textToSpeech?.speak(
-                                            currentWord.simplified,
+                                            currentWord.chinese,
                                             TextToSpeech.QUEUE_FLUSH,
                                             null,
                                             "replay_character"
@@ -238,13 +238,13 @@ fun WritingPracticeScreen(
                         }
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = currentWord.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                            text = currentWord.pinyin,
                             style = MaterialTheme.typography.headlineMedium,
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = currentWord.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+                            text = currentWord.english,
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textAlign = TextAlign.Center
@@ -282,7 +282,7 @@ fun WritingPracticeScreen(
                         currentPath = currentDrawingPath,
                         showHint = showHint,
                         showTrace = showTrace,
-                        hintCharacter = currentWord.simplified,
+                        hintCharacter = currentWord.chinese,
                         onPathStart = { offset ->
                             val path = Path().apply {
                                 moveTo(offset.x, offset.y)
@@ -414,7 +414,7 @@ fun WritingPracticeScreen(
                                 // Play TTS when correct
                                 if (ttsInitialized && currentWord != null) {
                                     textToSpeech?.speak(
-                                        currentWord.simplified,
+                                        currentWord.chinese,
                                         TextToSpeech.QUEUE_FLUSH,
                                         null,
                                         "correct_character"
@@ -519,7 +519,7 @@ fun WritingPracticeScreen(
                                         style = MaterialTheme.typography.bodyLarge
                                     )
                                     Text(
-                                        text = currentWord.simplified,
+                                        text = currentWord.chinese,
                                         style = MaterialTheme.typography.headlineLarge,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 36.sp
@@ -529,7 +529,7 @@ fun WritingPracticeScreen(
                                         onClick = {
                                             if (ttsInitialized && currentWord != null) {
                                                 textToSpeech?.speak(
-                                                    currentWord.simplified,
+                                                    currentWord.chinese,
                                                     TextToSpeech.QUEUE_FLUSH,
                                                     null,
                                                     "feedback_character"

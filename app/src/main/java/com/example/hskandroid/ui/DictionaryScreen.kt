@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.background
@@ -20,16 +20,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.hskandroid.model.HskWord
+import com.hskmaster.app.model.SimpleHskWord
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DictionaryScreen(
-    vocabulary: List<HskWord>,
+    vocabulary: List<SimpleHskWord>,
     hskLevel: Int,
     onBackPressed: () -> Unit,
-    onWordClick: (HskWord) -> Unit,
+    onWordClick: (SimpleHskWord) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var searchQuery by remember { mutableStateOf("") }
@@ -63,11 +63,9 @@ fun DictionaryScreen(
             vocabulary
         } else {
             vocabulary.filter { word ->
-                word.simplified.contains(searchQuery, ignoreCase = true) ||
-                word.forms.any { form ->
-                    form.transcriptions?.pinyin?.contains(searchQuery, ignoreCase = true) == true ||
-                    form.meanings.any { it.contains(searchQuery, ignoreCase = true) }
-                }
+                word.chinese.contains(searchQuery, ignoreCase = true) ||
+                word.pinyin.contains(searchQuery, ignoreCase = true) ||
+                word.english.contains(searchQuery, ignoreCase = true)
             }
         }
     }
@@ -160,7 +158,7 @@ fun DictionaryScreen(
                         onSpeakCharacter = {
                             if (ttsInitialized) {
                                 textToSpeech?.speak(
-                                    word.simplified,
+                                    word.chinese,
                                     TextToSpeech.QUEUE_FLUSH,
                                     null,
                                     "dictionary_word"
@@ -176,7 +174,7 @@ fun DictionaryScreen(
 
 @Composable
 fun WordCard(
-    word: HskWord,
+    word: SimpleHskWord,
     onClick: () -> Unit,
     onSpeakCharacter: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -201,7 +199,7 @@ fun WordCard(
                 ) {
                     // Chinese character
                     Text(
-                        text = word.simplified,
+                        text = word.chinese,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary
@@ -209,7 +207,7 @@ fun WordCard(
                     
                     // Pinyin
                     Text(
-                        text = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                        text = word.pinyin,
                         fontSize = 16.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -217,7 +215,7 @@ fun WordCard(
                 
                 // English meaning
                 Text(
-                    text = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+                    text = word.english,
                     fontSize = 14.sp,
                     modifier = Modifier.padding(top = 4.dp),
                     color = MaterialTheme.colorScheme.onSurface
@@ -246,12 +244,7 @@ fun WordCard(
                     )
                 }
                 
-                // Arrow indicator
-                Text(
-                    text = "›",
-                    fontSize = 24.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                
             }
         }
     }

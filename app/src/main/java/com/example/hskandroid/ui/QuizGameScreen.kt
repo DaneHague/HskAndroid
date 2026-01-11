@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import android.speech.tts.TextToSpeech
 import androidx.compose.animation.*
@@ -26,14 +26,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.hskandroid.model.HskWord
+import com.hskmaster.app.model.SimpleHskWord
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
 import kotlin.random.Random
 
 data class QuizQuestion(
-    val word: HskWord,
+    val word: SimpleHskWord,
     val questionType: QuestionType,
     val question: String,
     val correctAnswer: String,
@@ -52,9 +52,9 @@ enum class QuestionType {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuizGameScreen(
-    vocabulary: List<HskWord>,
+    vocabulary: List<SimpleHskWord>,
     hskLevel: Int = 1,
-    repository: com.example.hskandroid.data.repository.LearningRepository? = null,
+    repository: com.hskmaster.app.data.repository.LearningRepository? = null,
     onBackPressed: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
@@ -263,7 +263,7 @@ fun QuizGameScreen(
                     onSpeakCharacter = {
                         if (ttsInitialized) {
                             textToSpeech?.speak(
-                                currentQuestion.word.simplified,
+                                currentQuestion.word.chinese,
                                 TextToSpeech.QUEUE_FLUSH,
                                 null,
                                 "feedback_character"
@@ -280,7 +280,7 @@ fun QuizGameScreen(
                                 // Speak the Chinese character when correct
                                 if (ttsInitialized) {
                                     textToSpeech?.speak(
-                                        currentQuestion.word.simplified,
+                                        currentQuestion.word.chinese,
                                         TextToSpeech.QUEUE_FLUSH,
                                         null,
                                         "correct_answer"
@@ -527,7 +527,7 @@ fun AnswerOptions(
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "${question.word.simplified} (${question.word.forms.firstOrNull()?.transcriptions?.pinyin ?: ""})",
+                            text = "${question.word.chinese} (${question.word.pinyin})",
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Bold
                         )
@@ -551,7 +551,7 @@ fun AnswerOptions(
                     }
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = question.word.forms.firstOrNull()?.meanings?.joinToString("; ") ?: "",
+                        text = question.word.english,
                         style = MaterialTheme.typography.bodyMedium,
                         textAlign = TextAlign.Center,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -739,7 +739,7 @@ fun QuizCompleteScreen(
     }
 }
 
-fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuestion> {
+fun generateQuizQuestions(vocabulary: List<SimpleHskWord>, count: Int): List<QuizQuestion> {
     val questions = mutableListOf<QuizQuestion>()
     val availableWords = vocabulary.shuffled().take(minOf(count * 3, vocabulary.size))
     
@@ -752,8 +752,8 @@ fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuest
                 QuizQuestion(
                     word = word,
                     questionType = questionType,
-                    question = word.simplified,
-                    correctAnswer = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                    question = word.chinese,
+                    correctAnswer = word.pinyin,
                     options = generatePinyinOptions(word, availableWords)
                 )
             }
@@ -761,8 +761,8 @@ fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuest
                 QuizQuestion(
                     word = word,
                     questionType = questionType,
-                    question = word.simplified,
-                    correctAnswer = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+                    question = word.chinese,
+                    correctAnswer = word.english,
                     options = generateMeaningOptions(word, availableWords)
                 )
             }
@@ -770,8 +770,8 @@ fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuest
                 QuizQuestion(
                     word = word,
                     questionType = questionType,
-                    question = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
-                    correctAnswer = word.simplified,
+                    question = word.pinyin,
+                    correctAnswer = word.chinese,
                     options = generateCharacterOptions(word, availableWords)
                 )
             }
@@ -779,8 +779,8 @@ fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuest
                 QuizQuestion(
                     word = word,
                     questionType = questionType,
-                    question = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
-                    correctAnswer = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+                    question = word.pinyin,
+                    correctAnswer = word.english,
                     options = generateMeaningOptions(word, availableWords)
                 )
             }
@@ -788,8 +788,8 @@ fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuest
                 QuizQuestion(
                     word = word,
                     questionType = questionType,
-                    question = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
-                    correctAnswer = word.simplified,
+                    question = word.english,
+                    correctAnswer = word.chinese,
                     options = generateCharacterOptions(word, availableWords)
                 )
             }
@@ -797,8 +797,8 @@ fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuest
                 QuizQuestion(
                     word = word,
                     questionType = questionType,
-                    question = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
-                    correctAnswer = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                    question = word.english,
+                    correctAnswer = word.pinyin,
                     options = generatePinyinOptions(word, availableWords)
                 )
             }
@@ -810,13 +810,13 @@ fun generateQuizQuestions(vocabulary: List<HskWord>, count: Int): List<QuizQuest
     return questions
 }
 
-fun generateCharacterOptions(correctWord: HskWord, vocabulary: List<HskWord>): List<String> {
-    val options = mutableSetOf(correctWord.simplified)
-    val otherWords = vocabulary.filter { it.simplified != correctWord.simplified }.shuffled()
-    
+fun generateCharacterOptions(correctWord: SimpleHskWord, vocabulary: List<SimpleHskWord>): List<String> {
+    val options = mutableSetOf(correctWord.chinese)
+    val otherWords = vocabulary.filter { it.chinese != correctWord.chinese }.shuffled()
+
     for (word in otherWords) {
         if (options.size >= 4) break
-        options.add(word.simplified)
+        options.add(word.chinese)
     }
     
     while (options.size < 4) {
@@ -826,16 +826,16 @@ fun generateCharacterOptions(correctWord: HskWord, vocabulary: List<HskWord>): L
     return options.toList().shuffled()
 }
 
-fun generatePinyinOptions(correctWord: HskWord, vocabulary: List<HskWord>): List<String> {
-    val correctPinyin = correctWord.forms.firstOrNull()?.transcriptions?.pinyin ?: ""
+fun generatePinyinOptions(correctWord: SimpleHskWord, vocabulary: List<SimpleHskWord>): List<String> {
+    val correctPinyin = correctWord.pinyin
     val options = mutableSetOf(correctPinyin)
-    val otherWords = vocabulary.filter { 
-        it.forms.firstOrNull()?.transcriptions?.pinyin != correctPinyin 
+    val otherWords = vocabulary.filter {
+        it.pinyin != correctPinyin
     }.shuffled()
-    
+
     for (word in otherWords) {
         if (options.size >= 4) break
-        word.forms.firstOrNull()?.transcriptions?.pinyin?.let { options.add(it) }
+        options.add(word.pinyin)
     }
     
     while (options.size < 4) {
@@ -845,15 +845,15 @@ fun generatePinyinOptions(correctWord: HskWord, vocabulary: List<HskWord>): List
     return options.toList().shuffled()
 }
 
-fun generateMeaningOptions(correctWord: HskWord, vocabulary: List<HskWord>): List<String> {
-    val correctMeaning = correctWord.forms.firstOrNull()?.meanings?.firstOrNull() ?: ""
+fun generateMeaningOptions(correctWord: SimpleHskWord, vocabulary: List<SimpleHskWord>): List<String> {
+    val correctMeaning = correctWord.english
     val options = mutableSetOf(correctMeaning)
-    val otherWords = vocabulary.filter { it.simplified != correctWord.simplified }.shuffled()
-    
+    val otherWords = vocabulary.filter { it.chinese != correctWord.chinese }.shuffled()
+
     for (word in otherWords) {
         if (options.size >= 4) break
-        word.forms.firstOrNull()?.meanings?.firstOrNull()?.let { 
-            if (it != correctMeaning) options.add(it) 
+        if (word.english != correctMeaning) {
+            options.add(word.english)
         }
     }
     

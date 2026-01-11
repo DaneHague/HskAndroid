@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -21,15 +21,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.hskandroid.data.repository.LearningRepository
-import com.example.hskandroid.model.HskWord
-import com.example.hskandroid.ui.components.DonutChart
+import com.hskmaster.app.data.repository.LearningRepository
+import com.hskmaster.app.model.SimpleHskWord
+import com.hskmaster.app.ui.components.DonutChart
 import kotlinx.coroutines.flow.first
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WordStatisticsScreen(
-    word: HskWord,
+    word: SimpleHskWord,
     hskLevel: Int,
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
@@ -47,7 +47,7 @@ fun WordStatisticsScreen(
     
     LaunchedEffect(word) {
         val allRecords = repository.getAllRecords().first()
-        val wordRecords = allRecords.filter { it.character == word.simplified }
+        val wordRecords = allRecords.filter { it.character == word.chinese }
         
         totalAttempts = wordRecords.size
         totalCorrect = wordRecords.count { it.isCorrect }
@@ -113,21 +113,21 @@ fun WordStatisticsScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = word.simplified,
+                        text = word.chinese,
                         fontSize = 48.sp,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
                     
                     Text(
-                        text = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                        text = word.pinyin,
                         fontSize = 24.sp,
                         modifier = Modifier.padding(top = 8.dp),
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
                     
                     Text(
-                        text = word.forms.firstOrNull()?.meanings?.firstOrNull() ?: "",
+                        text = word.english,
                         fontSize = 16.sp,
                         modifier = Modifier.padding(top = 8.dp),
                         textAlign = TextAlign.Center,
@@ -406,7 +406,7 @@ data class GameTypeStats(
     val accuracy: Int
 )
 
-fun calculateGameTypeStats(records: List<com.example.hskandroid.data.database.LearningRecord>): GameTypeStats? {
+fun calculateGameTypeStats(records: List<com.hskmaster.app.data.database.LearningRecord>): GameTypeStats? {
     if (records.isEmpty()) return null
     
     val attempts = records.size

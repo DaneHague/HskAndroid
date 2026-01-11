@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import android.media.AudioManager
 import android.media.ToneGenerator
@@ -21,8 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.hskandroid.data.repository.LearningRepository
-import com.example.hskandroid.model.HskWord
+import com.hskmaster.app.data.repository.LearningRepository
+import com.hskmaster.app.model.SimpleHskWord
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
@@ -30,7 +30,7 @@ import java.util.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListeningGameScreen(
-    vocabulary: List<HskWord>,
+    vocabulary: List<SimpleHskWord>,
     hskLevel: Int = 1,
     onBackPressed: (() -> Unit)? = null,
     modifier: Modifier = Modifier
@@ -82,7 +82,7 @@ fun ListeningGameScreen(
     val answerOptions = remember(currentQuestion) {
         currentQuestion?.let { correct ->
             val wrongAnswers = vocabulary
-                .filter { it.simplified != correct.simplified }
+                .filter { it.chinese != correct.chinese }
                 .shuffled()
                 .take(3)
             (wrongAnswers + correct).shuffled()
@@ -93,7 +93,7 @@ fun ListeningGameScreen(
     LaunchedEffect(currentQuestionIndex, ttsInitialized) {
         if (ttsInitialized && currentQuestion != null) {
             delay(500) // Small delay for better UX
-            tts?.speak(currentQuestion.simplified, TextToSpeech.QUEUE_FLUSH, null, null)
+            tts?.speak(currentQuestion.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
             questionStartTime = System.currentTimeMillis()
             canPlaySound = false
             delay(2000) // Cooldown before allowing replay
@@ -182,7 +182,7 @@ fun ListeningGameScreen(
                             IconButton(
                                 onClick = {
                                     if (ttsInitialized && canPlaySound) {
-                                        tts?.speak(currentQuestion.simplified, TextToSpeech.QUEUE_FLUSH, null, null)
+                                        tts?.speak(currentQuestion.chinese, TextToSpeech.QUEUE_FLUSH, null, null)
                                         canPlaySound = false
                                         coroutineScope.launch {
                                             delay(2000)
@@ -243,16 +243,16 @@ fun ListeningGameScreen(
                             if (answerOptions.size > 0) {
                                 CompactAnswerCard(
                                     word = answerOptions[0],
-                                    isSelected = selectedAnswer == answerOptions[0].simplified,
-                                    isCorrect = showResult && answerOptions[0].simplified == currentQuestion.simplified,
-                                    isWrong = showResult && selectedAnswer == answerOptions[0].simplified && answerOptions[0].simplified != currentQuestion.simplified,
+                                    isSelected = selectedAnswer == answerOptions[0].chinese,
+                                    isCorrect = showResult && answerOptions[0].chinese == currentQuestion.chinese,
+                                    isWrong = showResult && selectedAnswer == answerOptions[0].chinese && answerOptions[0].chinese != currentQuestion.chinese,
                                     enabled = !showResult,
                                     onClick = { handleAnswerClick(answerOptions[0], currentQuestion, toneGenerator, repository, coroutineScope, hskLevel) {
-                                        selectedAnswer = answerOptions[0].simplified
+                                        selectedAnswer = answerOptions[0].chinese
                                         showResult = true
                                         totalAttempts++
                                         val responseTime = System.currentTimeMillis() - questionStartTime
-                                        isCorrect = answerOptions[0].simplified == currentQuestion.simplified
+                                        isCorrect = answerOptions[0].chinese == currentQuestion.chinese
                                         if (isCorrect) {
                                             score++
                                         }
@@ -264,16 +264,16 @@ fun ListeningGameScreen(
                             if (answerOptions.size > 1) {
                                 CompactAnswerCard(
                                     word = answerOptions[1],
-                                    isSelected = selectedAnswer == answerOptions[1].simplified,
-                                    isCorrect = showResult && answerOptions[1].simplified == currentQuestion.simplified,
-                                    isWrong = showResult && selectedAnswer == answerOptions[1].simplified && answerOptions[1].simplified != currentQuestion.simplified,
+                                    isSelected = selectedAnswer == answerOptions[1].chinese,
+                                    isCorrect = showResult && answerOptions[1].chinese == currentQuestion.chinese,
+                                    isWrong = showResult && selectedAnswer == answerOptions[1].chinese && answerOptions[1].chinese != currentQuestion.chinese,
                                     enabled = !showResult,
                                     onClick = { handleAnswerClick(answerOptions[1], currentQuestion, toneGenerator, repository, coroutineScope, hskLevel) {
-                                        selectedAnswer = answerOptions[1].simplified
+                                        selectedAnswer = answerOptions[1].chinese
                                         showResult = true
                                         totalAttempts++
                                         val responseTime = System.currentTimeMillis() - questionStartTime
-                                        isCorrect = answerOptions[1].simplified == currentQuestion.simplified
+                                        isCorrect = answerOptions[1].chinese == currentQuestion.chinese
                                         if (isCorrect) {
                                             score++
                                         }
@@ -292,16 +292,16 @@ fun ListeningGameScreen(
                             if (answerOptions.size > 2) {
                                 CompactAnswerCard(
                                     word = answerOptions[2],
-                                    isSelected = selectedAnswer == answerOptions[2].simplified,
-                                    isCorrect = showResult && answerOptions[2].simplified == currentQuestion.simplified,
-                                    isWrong = showResult && selectedAnswer == answerOptions[2].simplified && answerOptions[2].simplified != currentQuestion.simplified,
+                                    isSelected = selectedAnswer == answerOptions[2].chinese,
+                                    isCorrect = showResult && answerOptions[2].chinese == currentQuestion.chinese,
+                                    isWrong = showResult && selectedAnswer == answerOptions[2].chinese && answerOptions[2].chinese != currentQuestion.chinese,
                                     enabled = !showResult,
                                     onClick = { handleAnswerClick(answerOptions[2], currentQuestion, toneGenerator, repository, coroutineScope, hskLevel) {
-                                        selectedAnswer = answerOptions[2].simplified
+                                        selectedAnswer = answerOptions[2].chinese
                                         showResult = true
                                         totalAttempts++
                                         val responseTime = System.currentTimeMillis() - questionStartTime
-                                        isCorrect = answerOptions[2].simplified == currentQuestion.simplified
+                                        isCorrect = answerOptions[2].chinese == currentQuestion.chinese
                                         if (isCorrect) {
                                             score++
                                         }
@@ -313,16 +313,16 @@ fun ListeningGameScreen(
                             if (answerOptions.size > 3) {
                                 CompactAnswerCard(
                                     word = answerOptions[3],
-                                    isSelected = selectedAnswer == answerOptions[3].simplified,
-                                    isCorrect = showResult && answerOptions[3].simplified == currentQuestion.simplified,
-                                    isWrong = showResult && selectedAnswer == answerOptions[3].simplified && answerOptions[3].simplified != currentQuestion.simplified,
+                                    isSelected = selectedAnswer == answerOptions[3].chinese,
+                                    isCorrect = showResult && answerOptions[3].chinese == currentQuestion.chinese,
+                                    isWrong = showResult && selectedAnswer == answerOptions[3].chinese && answerOptions[3].chinese != currentQuestion.chinese,
                                     enabled = !showResult,
                                     onClick = { handleAnswerClick(answerOptions[3], currentQuestion, toneGenerator, repository, coroutineScope, hskLevel) {
-                                        selectedAnswer = answerOptions[3].simplified
+                                        selectedAnswer = answerOptions[3].chinese
                                         showResult = true
                                         totalAttempts++
                                         val responseTime = System.currentTimeMillis() - questionStartTime
-                                        isCorrect = answerOptions[3].simplified == currentQuestion.simplified
+                                        isCorrect = answerOptions[3].chinese == currentQuestion.chinese
                                         if (isCorrect) {
                                             score++
                                         }
@@ -391,16 +391,16 @@ fun ListeningGameScreen(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    text = currentQuestion.simplified,
+                                    text = currentQuestion.chinese,
                                     style = MaterialTheme.typography.headlineSmall,
                                     fontWeight = FontWeight.Bold
                                 )
                                 Text(
-                                    text = currentQuestion.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                                    text = currentQuestion.pinyin,
                                     style = MaterialTheme.typography.bodyLarge
                                 )
                                 Text(
-                                    text = currentQuestion.forms.firstOrNull()?.meanings?.firstOrNull()?.take(20) ?: "",
+                                    text = currentQuestion.english.take(20),
                                     style = MaterialTheme.typography.bodyMedium,
                                     modifier = Modifier.weight(1f),
                                     textAlign = TextAlign.End
@@ -451,8 +451,8 @@ fun ListeningGameScreen(
 }
 
 private fun handleAnswerClick(
-    option: HskWord,
-    currentQuestion: HskWord,
+    option: SimpleHskWord,
+    currentQuestion: SimpleHskWord,
     toneGenerator: ToneGenerator,
     repository: LearningRepository,
     coroutineScope: kotlinx.coroutines.CoroutineScope,
@@ -478,7 +478,7 @@ private fun handleAnswerClick(
 
 @Composable
 fun CompactAnswerCard(
-    word: HskWord,
+    word: SimpleHskWord,
     isSelected: Boolean,
     isCorrect: Boolean,
     isWrong: Boolean,
@@ -520,14 +520,14 @@ fun CompactAnswerCard(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = word.simplified,
+                    text = word.chinese,
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
                     color = if (isCorrect || isWrong) Color.White else MaterialTheme.colorScheme.onSurface,
                     fontSize = 28.sp
                 )
                 Text(
-                    text = word.forms.firstOrNull()?.transcriptions?.pinyin ?: "",
+                    text = word.pinyin,
                     style = MaterialTheme.typography.bodySmall,
                     color = if (isCorrect || isWrong) 
                         Color.White.copy(alpha = 0.9f) 

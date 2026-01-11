@@ -1,4 +1,4 @@
-package com.example.hskandroid.ui
+package com.hskmaster.app.ui
 
 import android.media.MediaPlayer
 import androidx.compose.animation.*
@@ -28,8 +28,8 @@ import androidx.compose.ui.graphics.asImageBitmap
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
-import com.example.hskandroid.data.repository.TestRepository
-import com.example.hskandroid.model.*
+import com.hskmaster.app.data.repository.TestRepository
+import com.hskmaster.app.model.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
@@ -40,6 +40,7 @@ import kotlin.time.Duration.Companion.seconds
 @Composable
 fun TestScreen(
     hskLevel: Int = 1,
+    testPath: String = "Hsk1Tests/H10901/H10901.json",
     onBackPressed: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
@@ -64,12 +65,13 @@ fun TestScreen(
     var isSeekBarDragging by remember { mutableStateOf(false) }
     
     // Load test on launch
-    LaunchedEffect(Unit) {
-        test = repository.loadTest("Hsk1Tests/H10901/H10901.json")
+    LaunchedEffect(testPath) {
+        test = repository.loadTest(testPath)
         
         // Initialize media player for listening section
+        val audioPath = testPath.replace(".json", ".mp3")
         try {
-            val afd = context.assets.openFd("Hsk1Tests/H10901/H10901Audio.mp3")
+            val afd = context.assets.openFd(audioPath)
             mediaPlayer = MediaPlayer().apply {
                 setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                 prepareAsync()
@@ -173,8 +175,13 @@ fun TestScreen(
         } else {
             // Test complete, calculate results
             val completionTime = System.currentTimeMillis() - startTime
-            testResult = test?.let {
-                repository.calculateTestResult(it, userAnswers, completionTime)
+            testResult = test?.let { currentTest ->
+                val result = repository.calculateTestResult(currentTest, userAnswers, completionTime)
+                // Save the test result to database
+                coroutineScope.launch {
+                    repository.saveTestResult(currentTest, result, userAnswers, hskLevel)
+                }
+                result
             }
             showResults = true
             // Stop audio when test is complete

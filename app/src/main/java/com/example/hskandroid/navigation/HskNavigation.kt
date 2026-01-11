@@ -1,4 +1,4 @@
-package com.example.hskandroid.navigation
+package com.hskmaster.app.navigation
 
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -7,18 +7,29 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.hskandroid.data.VocabularyLoader
-import com.example.hskandroid.model.HskWord
-import com.example.hskandroid.ui.GameSelectionScreen
-import com.example.hskandroid.ui.LevelSelectionScreen
-import com.example.hskandroid.ui.ListeningGameScreen
-import com.example.hskandroid.ui.MatchingGameScreen
-import com.example.hskandroid.ui.QuizGameScreen
-import com.example.hskandroid.ui.WritingPracticeScreen
-import com.example.hskandroid.ui.LearningLogScreen
-import com.example.hskandroid.ui.DictionaryScreen
-import com.example.hskandroid.ui.WordStatisticsScreen
-import com.example.hskandroid.ui.TestScreen
+import androidx.navigation.navArgument
+import androidx.navigation.NavType
+import com.hskmaster.app.data.VocabularyLoader
+import com.hskmaster.app.model.SimpleHskWord
+import com.hskmaster.app.ui.GameSelectionScreen
+import com.hskmaster.app.ui.LevelSelectionScreen
+import com.hskmaster.app.ui.ListeningGameScreen
+import com.hskmaster.app.ui.MatchingGameScreen
+import com.hskmaster.app.ui.QuizGameScreen
+import com.hskmaster.app.ui.WritingPracticeScreen
+import com.hskmaster.app.ui.LearningLogScreen
+import com.hskmaster.app.ui.DictionaryScreen
+import com.hskmaster.app.ui.WordStatisticsScreen
+import com.hskmaster.app.ui.TestScreen
+import com.hskmaster.app.ui.TestSelectionScreen
+import com.hskmaster.app.ui.TestResultDetailScreen
+import com.hskmaster.app.ui.SentenceBuilderScreen
+import com.hskmaster.app.ui.SpeedChallengeScreen
+import com.hskmaster.app.ui.FillBlankScreen
+import com.hskmaster.app.data.SentenceLoader
+import com.hskmaster.app.data.ClozeLoader
+import com.hskmaster.app.model.HskSentence
+import com.hskmaster.app.model.ClozeQuestion
 
 sealed class Screen(val route: String) {
     object LevelSelection : Screen("level_selection")
@@ -37,6 +48,15 @@ sealed class Screen(val route: String) {
     object ListeningGame : Screen("listening_game/{level}") {
         fun createRoute(level: Int) = "listening_game/$level"
     }
+    object SentenceBuilder : Screen("sentence_builder/{level}") {
+        fun createRoute(level: Int) = "sentence_builder/$level"
+    }
+    object SpeedChallenge : Screen("speed_challenge/{level}") {
+        fun createRoute(level: Int) = "speed_challenge/$level"
+    }
+    object FillBlank : Screen("fill_blank/{level}") {
+        fun createRoute(level: Int) = "fill_blank/$level"
+    }
     object LearningLog : Screen("learning_log")
     object Dictionary : Screen("dictionary/{level}") {
         fun createRoute(level: Int) = "dictionary/$level"
@@ -44,8 +64,14 @@ sealed class Screen(val route: String) {
     object WordStatistics : Screen("word_statistics/{level}/{wordId}") {
         fun createRoute(level: Int, wordId: String) = "word_statistics/$level/$wordId"
     }
-    object Test : Screen("test/{level}") {
-        fun createRoute(level: Int) = "test/$level"
+    object TestSelection : Screen("test_selection/{level}") {
+        fun createRoute(level: Int) = "test_selection/$level"
+    }
+    object Test : Screen("test/{level}?testPath={testPath}") {
+        fun createRoute(level: Int, testPath: String) = "test/$level?testPath=${java.net.URLEncoder.encode(testPath, "UTF-8")}"
+    }
+    object TestResultDetail : Screen("test_result/{attemptId}") {
+        fun createRoute(attemptId: Long) = "test_result/$attemptId"
     }
 }
 
@@ -80,8 +106,11 @@ fun HskNavigation(
                         "quiz" -> navController.navigate(Screen.QuizGame.createRoute(level))
                         "writing" -> navController.navigate(Screen.WritingPractice.createRoute(level))
                         "listening" -> navController.navigate(Screen.ListeningGame.createRoute(level))
+                        "sentence_builder" -> navController.navigate(Screen.SentenceBuilder.createRoute(level))
+                        "speed_challenge" -> navController.navigate(Screen.SpeedChallenge.createRoute(level))
+                        "fill_blank" -> navController.navigate(Screen.FillBlank.createRoute(level))
                         "dictionary" -> navController.navigate(Screen.Dictionary.createRoute(level))
-                        "test" -> navController.navigate(Screen.Test.createRoute(level))
+                        "test" -> navController.navigate(Screen.TestSelection.createRoute(level))
                     }
                 },
                 onBackPressed = {
@@ -93,7 +122,7 @@ fun HskNavigation(
         composable(Screen.MatchingGame.route) { backStackEntry ->
             val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
             val context = LocalContext.current
-            var vocabulary by remember { mutableStateOf<List<HskWord>>(emptyList()) }
+            var vocabulary by remember { mutableStateOf<List<SimpleHskWord>>(emptyList()) }
             
             LaunchedEffect(level) {
                 vocabulary = VocabularyLoader().loadHskVocabulary(context, level)
@@ -113,8 +142,8 @@ fun HskNavigation(
         composable(Screen.QuizGame.route) { backStackEntry ->
             val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
             val context = LocalContext.current
-            var vocabulary by remember { mutableStateOf<List<HskWord>>(emptyList()) }
-            val repository = remember { com.example.hskandroid.data.repository.LearningRepository(context) }
+            var vocabulary by remember { mutableStateOf<List<SimpleHskWord>>(emptyList()) }
+            val repository = remember { com.hskmaster.app.data.repository.LearningRepository(context) }
             
             LaunchedEffect(level) {
                 vocabulary = VocabularyLoader().loadHskVocabulary(context, level)
@@ -135,7 +164,7 @@ fun HskNavigation(
         composable(Screen.WritingPractice.route) { backStackEntry ->
             val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
             val context = LocalContext.current
-            var vocabulary by remember { mutableStateOf<List<HskWord>>(emptyList()) }
+            var vocabulary by remember { mutableStateOf<List<SimpleHskWord>>(emptyList()) }
             
             LaunchedEffect(level) {
                 vocabulary = VocabularyLoader().loadHskVocabulary(context, level)
@@ -155,7 +184,7 @@ fun HskNavigation(
         composable(Screen.ListeningGame.route) { backStackEntry ->
             val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
             val context = LocalContext.current
-            var vocabulary by remember { mutableStateOf<List<HskWord>>(emptyList()) }
+            var vocabulary by remember { mutableStateOf<List<SimpleHskWord>>(emptyList()) }
             
             LaunchedEffect(level) {
                 vocabulary = VocabularyLoader().loadHskVocabulary(context, level)
@@ -171,7 +200,73 @@ fun HskNavigation(
                 )
             }
         }
-        
+
+        composable(Screen.SentenceBuilder.route) { backStackEntry ->
+            val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
+            val context = LocalContext.current
+            var sentences by remember { mutableStateOf<List<HskSentence>>(emptyList()) }
+            val repository = remember { com.hskmaster.app.data.repository.LearningRepository(context) }
+
+            LaunchedEffect(level) {
+                sentences = SentenceLoader().loadSentences(context, level)
+            }
+
+            if (sentences.isNotEmpty()) {
+                SentenceBuilderScreen(
+                    sentences = sentences,
+                    hskLevel = level,
+                    repository = repository,
+                    onBackPressed = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+        }
+
+        composable(Screen.SpeedChallenge.route) { backStackEntry ->
+            val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
+            val context = LocalContext.current
+            var vocabulary by remember { mutableStateOf<List<SimpleHskWord>>(emptyList()) }
+            val repository = remember { com.hskmaster.app.data.repository.LearningRepository(context) }
+
+            LaunchedEffect(level) {
+                vocabulary = VocabularyLoader().loadHskVocabulary(context, level)
+            }
+
+            if (vocabulary.isNotEmpty()) {
+                SpeedChallengeScreen(
+                    vocabulary = vocabulary,
+                    hskLevel = level,
+                    repository = repository,
+                    onBackPressed = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+        }
+
+        composable(Screen.FillBlank.route) { backStackEntry ->
+            val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
+            val context = LocalContext.current
+            var questions by remember { mutableStateOf<List<ClozeQuestion>>(emptyList()) }
+            val repository = remember { com.hskmaster.app.data.repository.LearningRepository(context) }
+
+            LaunchedEffect(level) {
+                questions = ClozeLoader().loadQuestions(context, level)
+            }
+
+            if (questions.isNotEmpty()) {
+                FillBlankScreen(
+                    questions = questions,
+                    hskLevel = level,
+                    repository = repository,
+                    onBackPressed = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+        }
+
         composable(Screen.LearningLog.route) {
             LearningLogScreen(
                 onBackPressed = {
@@ -183,7 +278,7 @@ fun HskNavigation(
         composable(Screen.Dictionary.route) { backStackEntry ->
             val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
             val context = LocalContext.current
-            var vocabulary by remember { mutableStateOf<List<HskWord>>(emptyList()) }
+            var vocabulary by remember { mutableStateOf<List<SimpleHskWord>>(emptyList()) }
             
             LaunchedEffect(level) {
                 vocabulary = VocabularyLoader().loadHskVocabulary(context, level)
@@ -197,7 +292,7 @@ fun HskNavigation(
                         navController.popBackStack()
                     },
                     onWordClick = { word ->
-                        navController.navigate(Screen.WordStatistics.createRoute(level, word.simplified))
+                        navController.navigate(Screen.WordStatistics.createRoute(level, word.chinese))
                     }
                 )
             }
@@ -207,13 +302,13 @@ fun HskNavigation(
             val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
             val wordId = backStackEntry.arguments?.getString("wordId") ?: ""
             val context = LocalContext.current
-            var vocabulary by remember { mutableStateOf<List<HskWord>>(emptyList()) }
+            var vocabulary by remember { mutableStateOf<List<SimpleHskWord>>(emptyList()) }
             
             LaunchedEffect(level) {
                 vocabulary = VocabularyLoader().loadHskVocabulary(context, level)
             }
             
-            val word = vocabulary.find { it.simplified == wordId }
+            val word = vocabulary.find { it.chinese == wordId }
             
             if (word != null) {
                 WordStatisticsScreen(
@@ -226,11 +321,52 @@ fun HskNavigation(
             }
         }
         
-        composable(Screen.Test.route) { backStackEntry ->
+        composable(Screen.TestSelection.route) { backStackEntry ->
             val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
+            
+            TestSelectionScreen(
+                hskLevel = level,
+                onTestSelected = { testPath ->
+                    navController.navigate(Screen.Test.createRoute(level, testPath))
+                },
+                onAttemptSelected = { attemptId ->
+                    navController.navigate(Screen.TestResultDetail.createRoute(attemptId))
+                },
+                onBackPressed = {
+                    navController.popBackStack()
+                }
+            )
+        }
+        
+        composable(
+            route = Screen.Test.route,
+            arguments = listOf(
+                navArgument("testPath") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                }
+            )
+        ) { backStackEntry ->
+            val level = backStackEntry.arguments?.getString("level")?.toIntOrNull() ?: 1
+            val testPath = java.net.URLDecoder.decode(
+                backStackEntry.arguments?.getString("testPath") ?: "",
+                "UTF-8"
+            )
             
             TestScreen(
                 hskLevel = level,
+                testPath = testPath,
+                onBackPressed = {
+                    navController.popBackStack()
+                }
+            )
+        }
+        
+        composable(Screen.TestResultDetail.route) { backStackEntry ->
+            val attemptId = backStackEntry.arguments?.getString("attemptId")?.toLongOrNull() ?: 0L
+            
+            TestResultDetailScreen(
+                attemptId = attemptId,
                 onBackPressed = {
                     navController.popBackStack()
                 }

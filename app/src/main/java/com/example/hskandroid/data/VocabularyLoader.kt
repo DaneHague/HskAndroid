@@ -1,7 +1,7 @@
-package com.example.hskandroid.data
+package com.hskmaster.app.data
 
 import android.content.Context
-import com.example.hskandroid.model.HskWord
+import com.hskmaster.app.model.SimpleHskWord
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
 
@@ -11,18 +11,18 @@ class VocabularyLoader {
         isLenient = true
     }
     
-    fun loadHskVocabulary(context: Context, level: Int): List<HskWord> {
+    fun loadHskVocabulary(context: Context, level: Int): List<SimpleHskWord> {
         return try {
             val fileName = "hsk$level.json"
             val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
-            json.decodeFromString<List<HskWord>>(jsonString)
+            json.decodeFromString<List<SimpleHskWord>>(jsonString)
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList()
         }
     }
-    
-    fun loadHsk1Vocabulary(context: Context): List<HskWord> {
+
+    fun loadHsk1Vocabulary(context: Context): List<SimpleHskWord> {
         return loadHskVocabulary(context, 1)
     }
 }

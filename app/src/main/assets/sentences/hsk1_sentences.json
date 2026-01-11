@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "chinese": "我喜欢吃苹果",
+    "pinyin": "wǒ xǐ huan chī píng guǒ",
+    "english": "I like to eat apples",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "喜欢", "pinyin": "xǐ huan", "position": 1 },
+      { "chinese": "吃", "pinyin": "chī", "position": 2 },
+      { "chinese": "苹果", "pinyin": "píng guǒ", "position": 3 }
+    ]
+  },
+  {
+    "id": 2,
+    "chinese": "他是我的朋友",
+    "pinyin": "tā shì wǒ de péng you",
+    "english": "He is my friend",
+    "words": [
+      { "chinese": "他", "pinyin": "tā", "position": 0 },
+      { "chinese": "是", "pinyin": "shì", "position": 1 },
+      { "chinese": "我的", "pinyin": "wǒ de", "position": 2 },
+      { "chinese": "朋友", "pinyin": "péng you", "position": 3 }
+    ]
+  },
+  {
+    "id": 3,
+    "chinese": "今天天气很好",
+    "pinyin": "jīn tiān tiān qì hěn hǎo",
+    "english": "The weather is very good today",
+    "words": [
+      { "chinese": "今天", "pinyin": "jīn tiān", "position": 0 },
+      { "chinese": "天气", "pinyin": "tiān qì", "position": 1 },
+      { "chinese": "很", "pinyin": "hěn", "position": 2 },
+      { "chinese": "好", "pinyin": "hǎo", "position": 3 }
+    ]
+  },
+  {
+    "id": 4,
+    "chinese": "我想喝水",
+    "pinyin": "wǒ xiǎng hē shuǐ",
+    "english": "I want to drink water",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "想", "pinyin": "xiǎng", "position": 1 },
+      { "chinese": "喝", "pinyin": "hē", "position": 2 },
+      { "chinese": "水", "pinyin": "shuǐ", "position": 3 }
+    ]
+  },
+  {
+    "id": 5,
+    "chinese": "她会说中文",
+    "pinyin": "tā huì shuō zhōng wén",
+    "english": "She can speak Chinese",
+    "words": [
+      { "chinese": "她", "pinyin": "tā", "position": 0 },
+      { "chinese": "会", "pinyin": "huì", "position": 1 },
+      { "chinese": "说", "pinyin": "shuō", "position": 2 },
+      { "chinese": "中文", "pinyin": "zhōng wén", "position": 3 }
+    ]
+  },
+  {
+    "id": 6,
+    "chinese": "我们去学校",
+    "pinyin": "wǒ men qù xué xiào",
+    "english": "We go to school",
+    "words": [
+      { "chinese": "我们", "pinyin": "wǒ men", "position": 0 },
+      { "chinese": "去", "pinyin": "qù", "position": 1 },
+      { "chinese": "学校", "pinyin": "xué xiào", "position": 2 }
+    ]
+  },
+  {
+    "id": 7,
+    "chinese": "你叫什么名字",
+    "pinyin": "nǐ jiào shén me míng zi",
+    "english": "What is your name?",
+    "words": [
+      { "chinese": "你", "pinyin": "nǐ", "position": 0 },
+      { "chinese": "叫", "pinyin": "jiào", "position": 1 },
+      { "chinese": "什么", "pinyin": "shén me", "position": 2 },
+      { "chinese": "名字", "pinyin": "míng zi", "position": 3 }
+    ]
+  },
+  {
+    "id": 8,
+    "chinese": "我爸爸在家",
+    "pinyin": "wǒ bà ba zài jiā",
+    "english": "My father is at home",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "爸爸", "pinyin": "bà ba", "position": 1 },
+      { "chinese": "在", "pinyin": "zài", "position": 2 },
+      { "chinese": "家", "pinyin": "jiā", "position": 3 }
+    ]
+  },
+  {
+    "id": 9,
+    "chinese": "现在几点了",
+    "pinyin": "xiàn zài jǐ diǎn le",
+    "english": "What time is it now?",
+    "words": [
+      { "chinese": "现在", "pinyin": "xiàn zài", "position": 0 },
+      { "chinese": "几点", "pinyin": "jǐ diǎn", "position": 1 },
+      { "chinese": "了", "pinyin": "le", "position": 2 }
+    ]
+  },
+  {
+    "id": 10,
+    "chinese": "我住在北京",
+    "pinyin": "wǒ zhù zài běi jīng",
+    "english": "I live in Beijing",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "住", "pinyin": "zhù", "position": 1 },
+      { "chinese": "在", "pinyin": "zài", "position": 2 },
+      { "chinese": "北京", "pinyin": "běi jīng", "position": 3 }
+    ]
+  },
+  {
+    "id": 11,
+    "chinese": "这本书很好看",
+    "pinyin": "zhè běn shū hěn hǎo kàn",
+    "english": "This book is very interesting",
+    "words": [
+      { "chinese": "这", "pinyin": "zhè", "position": 0 },
+      { "chinese": "本", "pinyin": "běn", "position": 1 },
+      { "chinese": "书", "pinyin": "shū", "position": 2 },
+      { "chinese": "很", "pinyin": "hěn", "position": 3 },
+      { "chinese": "好看", "pinyin": "hǎo kàn", "position": 4 }
+    ]
+  },
+  {
+    "id": 12,
+    "chinese": "我妈妈做饭",
+    "pinyin": "wǒ mā ma zuò fàn",
+    "english": "My mother cooks",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "妈妈", "pinyin": "mā ma", "position": 1 },
+      { "chinese": "做", "pinyin": "zuò", "position": 2 },
+      { "chinese": "饭", "pinyin": "fàn", "position": 3 }
+    ]
+  },
+  {
+    "id": 13,
+    "chinese": "他们是学生",
+    "pinyin": "tā men shì xué sheng",
+    "english": "They are students",
+    "words": [
+      { "chinese": "他们", "pinyin": "tā men", "position": 0 },
+      { "chinese": "是", "pinyin": "shì", "position": 1 },
+      { "chinese": "学生", "pinyin": "xué sheng", "position": 2 }
+    ]
+  },
+  {
+    "id": 14,
+    "chinese": "我有一个儿子",
+    "pinyin": "wǒ yǒu yī gè ér zi",
+    "english": "I have a son",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "有", "pinyin": "yǒu", "position": 1 },
+      { "chinese": "一个", "pinyin": "yī gè", "position": 2 },
+      { "chinese": "儿子", "pinyin": "ér zi", "position": 3 }
+    ]
+  },
+  {
+    "id": 15,
+    "chinese": "她买了一些水果",
+    "pinyin": "tā mǎi le yī xiē shuǐ guǒ",
+    "english": "She bought some fruit",
+    "words": [
+      { "chinese": "她", "pinyin": "tā", "position": 0 },
+      { "chinese": "买了", "pinyin": "mǎi le", "position": 1 },
+      { "chinese": "一些", "pinyin": "yī xiē", "position": 2 },
+      { "chinese": "水果", "pinyin": "shuǐ guǒ", "position": 3 }
+    ]
+  },
+  {
+    "id": 16,
+    "chinese": "你能看见那个人吗",
+    "pinyin": "nǐ néng kàn jiàn nà gè rén ma",
+    "english": "Can you see that person?",
+    "words": [
+      { "chinese": "你", "pinyin": "nǐ", "position": 0 },
+      { "chinese": "能", "pinyin": "néng", "position": 1 },
+      { "chinese": "看见", "pinyin": "kàn jiàn", "position": 2 },
+      { "chinese": "那个", "pinyin": "nà gè", "position": 3 },
+      { "chinese": "人", "pinyin": "rén", "position": 4 },
+      { "chinese": "吗", "pinyin": "ma", "position": 5 }
+    ]
+  },
+  {
+    "id": 17,
+    "chinese": "我的猫很小",
+    "pinyin": "wǒ de māo hěn xiǎo",
+    "english": "My cat is very small",
+    "words": [
+      { "chinese": "我的", "pinyin": "wǒ de", "position": 0 },
+      { "chinese": "猫", "pinyin": "māo", "position": 1 },
+      { "chinese": "很", "pinyin": "hěn", "position": 2 },
+      { "chinese": "小", "pinyin": "xiǎo", "position": 3 }
+    ]
+  },
+  {
+    "id": 18,
+    "chinese": "请坐在这里",
+    "pinyin": "qǐng zuò zài zhè lǐ",
+    "english": "Please sit here",
+    "words": [
+      { "chinese": "请", "pinyin": "qǐng", "position": 0 },
+      { "chinese": "坐", "pinyin": "zuò", "position": 1 },
+      { "chinese": "在", "pinyin": "zài", "position": 2 },
+      { "chinese": "这里", "pinyin": "zhè lǐ", "position": 3 }
+    ]
+  },
+  {
+    "id": 19,
+    "chinese": "明天我不工作",
+    "pinyin": "míng tiān wǒ bù gōng zuò",
+    "english": "Tomorrow I don't work",
+    "words": [
+      { "chinese": "明天", "pinyin": "míng tiān", "position": 0 },
+      { "chinese": "我", "pinyin": "wǒ", "position": 1 },
+      { "chinese": "不", "pinyin": "bù", "position": 2 },
+      { "chinese": "工作", "pinyin": "gōng zuò", "position": 3 }
+    ]
+  },
+  {
+    "id": 20,
+    "chinese": "他在医院里",
+    "pinyin": "tā zài yī yuàn lǐ",
+    "english": "He is in the hospital",
+    "words": [
+      { "chinese": "他", "pinyin": "tā", "position": 0 },
+      { "chinese": "在", "pinyin": "zài", "position": 1 },
+      { "chinese": "医院", "pinyin": "yī yuàn", "position": 2 },
+      { "chinese": "里", "pinyin": "lǐ", "position": 3 }
+    ]
+  },
+  {
+    "id": 21,
+    "chinese": "你吃饭了吗",
+    "pinyin": "nǐ chī fàn le ma",
+    "english": "Have you eaten?",
+    "words": [
+      { "chinese": "你", "pinyin": "nǐ", "position": 0 },
+      { "chinese": "吃饭", "pinyin": "chī fàn", "position": 1 },
+      { "chinese": "了", "pinyin": "le", "position": 2 },
+      { "chinese": "吗", "pinyin": "ma", "position": 3 }
+    ]
+  },
+  {
+    "id": 22,
+    "chinese": "我想买这个东西",
+    "pinyin": "wǒ xiǎng mǎi zhè gè dōng xi",
+    "english": "I want to buy this thing",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "想", "pinyin": "xiǎng", "position": 1 },
+      { "chinese": "买", "pinyin": "mǎi", "position": 2 },
+      { "chinese": "这个", "pinyin": "zhè gè", "position": 3 },
+      { "chinese": "东西", "pinyin": "dōng xi", "position": 4 }
+    ]
+  },
+  {
+    "id": 23,
+    "chinese": "我的女儿很漂亮",
+    "pinyin": "wǒ de nǚ ér hěn piào liang",
+    "english": "My daughter is very pretty",
+    "words": [
+      { "chinese": "我的", "pinyin": "wǒ de", "position": 0 },
+      { "chinese": "女儿", "pinyin": "nǚ ér", "position": 1 },
+      { "chinese": "很", "pinyin": "hěn", "position": 2 },
+      { "chinese": "漂亮", "pinyin": "piào liang", "position": 3 }
+    ]
+  },
+  {
+    "id": 24,
+    "chinese": "你多大了",
+    "pinyin": "nǐ duō dà le",
+    "english": "How old are you?",
+    "words": [
+      { "chinese": "你", "pinyin": "nǐ", "position": 0 },
+      { "chinese": "多大", "pinyin": "duō dà", "position": 1 },
+      { "chinese": "了", "pinyin": "le", "position": 2 }
+    ]
+  },
+  {
+    "id": 25,
+    "chinese": "我在看电视",
+    "pinyin": "wǒ zài kàn diàn shì",
+    "english": "I am watching TV",
+    "words": [
+      { "chinese": "我", "pinyin": "wǒ", "position": 0 },
+      { "chinese": "在", "pinyin": "zài", "position": 1 },
+      { "chinese": "看", "pinyin": "kàn", "position": 2 },
+      { "chinese": "电视", "pinyin": "diàn shì", "position": 3 }
+    ]
+  }
+]
