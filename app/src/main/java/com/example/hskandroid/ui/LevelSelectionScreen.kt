@@ -1,7 +1,9 @@
 package com.hskmaster.app.ui
 
+import android.app.Activity
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -9,7 +11,11 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
@@ -25,7 +31,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hskmaster.app.data.AssetChecker
+import com.hskmaster.app.data.BillingManager
 import com.hskmaster.app.data.ProgressStats
+import com.hskmaster.app.data.PurchaseManager
 import com.hskmaster.app.data.UserProgressManager
 
 data class HskLevel(
@@ -42,18 +50,37 @@ data class HskLevel(
 fun LevelSelectionScreen(
     onLevelSelected: (Int) -> Unit,
     onLogPressed: () -> Unit,
+    onAboutPressed: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val activity = context as? Activity
+
     val availableLevels = remember {
         AssetChecker.getAvailableLevels(context)
     }
     val progressManager = remember { UserProgressManager(context) }
     var progressStats by remember { mutableStateOf(progressManager.getProgressStats()) }
 
-    // Refresh stats when screen is shown
+    // Billing
+    val purchaseManager = remember { PurchaseManager(context) }
+    val billingManager = remember { BillingManager(context, purchaseManager) }
+    val isPremium by billingManager.isPremium.collectAsState()
+    val purchaseInProgress by billingManager.purchaseInProgress.collectAsState()
+
+    var showPremiumDialog by remember { mutableStateOf(false) }
+
+    // Connect to billing
     LaunchedEffect(Unit) {
         progressStats = progressManager.getProgressStats()
+        billingManager.connect()
+    }
+
+    // Disconnect when leaving
+    DisposableEffect(Unit) {
+        onDispose {
+            billingManager.disconnect()
+        }
     }
 
     val hskLevels = listOf(
@@ -115,6 +142,23 @@ fun LevelSelectionScreen(
         )
     )
 
+    // Premium Dialog
+    if (showPremiumDialog) {
+        PremiumUpgradeDialog(
+            price = billingManager.getFormattedPrice(),
+            isLoading = purchaseInProgress,
+            onDismiss = { showPremiumDialog = false },
+            onPurchase = {
+                if (activity != null && billingManager.isReady()) {
+                    billingManager.launchPurchaseFlow(activity)
+                }
+            },
+            onRestore = {
+                billingManager.connect() // Re-query purchases
+            }
+        )
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -125,6 +169,12 @@ fun LevelSelectionScreen(
                     )
                 },
                 actions = {
+                    IconButton(onClick = onAboutPressed) {
+                        Icon(
+                            imageVector = Icons.Default.Info,
+                            contentDescription = "About"
+                        )
+                    }
                     TextButton(
                         onClick = onLogPressed,
                         modifier = Modifier.padding(end = 8.dp)
@@ -163,7 +213,15 @@ fun LevelSelectionScreen(
             // Progress Card with Streak and XP
             ProgressCard(stats = progressStats)
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
+
+            // Premium Status Card
+            PremiumStatusCard(
+                isPremium = isPremium,
+                onUpgradeClick = { showPremiumDialog = true }
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = "Select HSK Level",
@@ -190,6 +248,270 @@ fun LevelSelectionScreen(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun PremiumStatusCard(
+    isPremium: Boolean,
+    onUpgradeClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(enabled = !isPremium) { onUpgradeClick() },
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = if (isPremium)
+                Color(0xFF4CAF50).copy(alpha = 0.15f)
+            else
+                Color(0xFFFFD700).copy(alpha = 0.15f)
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                // Icon
+                Box(
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clip(CircleShape)
+                        .background(
+                            brush = if (isPremium) {
+                                Brush.linearGradient(
+                                    colors = listOf(
+                                        Color(0xFF4CAF50),
+                                        Color(0xFF8BC34A)
+                                    )
+                                )
+                            } else {
+                                Brush.linearGradient(
+                                    colors = listOf(
+                                        Color(0xFFFFD700),
+                                        Color(0xFFFFA500)
+                                    )
+                                )
+                            }
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = if (isPremium) Icons.Default.CheckCircle else Icons.Default.Star,
+                        contentDescription = null,
+                        tint = Color.White,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+
+                // Text
+                Column {
+                    Text(
+                        text = if (isPremium) "Premium Active" else "Upgrade to Premium",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = if (isPremium)
+                            "All games unlocked!"
+                        else
+                            "Unlock 3 extra games",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
+            // Button/Badge
+            if (isPremium) {
+                Surface(
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF4CAF50)
+                ) {
+                    Text(
+                        text = "PRO",
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                    )
+                }
+            } else {
+                Surface(
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFFFFD700)
+                ) {
+                    Text(
+                        text = "£0.99",
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun PremiumUpgradeDialog(
+    price: String,
+    isLoading: Boolean,
+    onDismiss: () -> Unit,
+    onPurchase: () -> Unit,
+    onRestore: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = { if (!isLoading) onDismiss() },
+        icon = {
+            Box(
+                modifier = Modifier
+                    .size(64.dp)
+                    .clip(CircleShape)
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(
+                                Color(0xFFFFD700),
+                                Color(0xFFFFA500)
+                            )
+                        )
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Star,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(36.dp)
+                )
+            }
+        },
+        title = {
+            Text(
+                text = "Upgrade to Premium",
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
+            )
+        },
+        text = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Unlock all games and features!",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Features list
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    PremiumFeatureRow("Listening Practice")
+                    PremiumFeatureRow("Sentence Builder")
+                    PremiumFeatureRow("Fill in the Blank")
+                    PremiumFeatureRow("No advertisements")
+                    PremiumFeatureRow("Future updates included")
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "One-time purchase",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        },
+        confirmButton = {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    onClick = onPurchase,
+                    enabled = !isLoading,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFFFD700)
+                    ),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    if (isLoading) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(20.dp),
+                            color = Color.Black,
+                            strokeWidth = 2.dp
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Processing...",
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                    } else {
+                        Text(
+                            text = "Get Premium - $price",
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Restore purchases button
+                TextButton(
+                    onClick = onRestore,
+                    enabled = !isLoading
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Refresh,
+                        contentDescription = null,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text("Restore Purchases")
+                }
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = onDismiss,
+                enabled = !isLoading
+            ) {
+                Text("Maybe Later")
+            }
+        }
+    )
+}
+
+@Composable
+private fun PremiumFeatureRow(feature: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Default.CheckCircle,
+            contentDescription = null,
+            tint = Color(0xFF4CAF50),
+            modifier = Modifier.size(20.dp)
+        )
+        Text(
+            text = feature,
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }
 

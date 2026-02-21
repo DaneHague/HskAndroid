@@ -26,6 +26,7 @@ import com.hskmaster.app.ui.TestResultDetailScreen
 import com.hskmaster.app.ui.SentenceBuilderScreen
 import com.hskmaster.app.ui.SpeedChallengeScreen
 import com.hskmaster.app.ui.FillBlankScreen
+import com.hskmaster.app.ui.AboutScreen
 import com.hskmaster.app.data.SentenceLoader
 import com.hskmaster.app.data.ClozeLoader
 import com.hskmaster.app.model.HskSentence
@@ -58,6 +59,7 @@ sealed class Screen(val route: String) {
         fun createRoute(level: Int) = "fill_blank/$level"
     }
     object LearningLog : Screen("learning_log")
+    object About : Screen("about")
     object Dictionary : Screen("dictionary/{level}") {
         fun createRoute(level: Int) = "dictionary/$level"
     }
@@ -92,6 +94,9 @@ fun HskNavigation(
                 },
                 onLogPressed = {
                     navController.navigate(Screen.LearningLog.route)
+                },
+                onAboutPressed = {
+                    navController.navigate(Screen.About.route)
                 }
             )
         }
@@ -269,6 +274,14 @@ fun HskNavigation(
 
         composable(Screen.LearningLog.route) {
             LearningLogScreen(
+                onBackPressed = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(Screen.About.route) {
+            AboutScreen(
                 onBackPressed = {
                     navController.popBackStack()
                 }

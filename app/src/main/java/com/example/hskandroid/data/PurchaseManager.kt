@@ -40,12 +40,4 @@ class PurchaseManager(context: Context) {
         prefs.edit().putBoolean(KEY_IS_PREMIUM, value).apply()
     }
 
-    /**
-     * For testing - toggle premium status
-     */
-    fun togglePremium(): Boolean {
-        val newValue = !isPremium()
-        setPremium(newValue)
-        return newValue
-    }
 }

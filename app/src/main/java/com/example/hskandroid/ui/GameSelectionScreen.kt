@@ -1,5 +1,6 @@
 package com.hskmaster.app.ui
 
+import android.app.Activity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -31,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hskmaster.app.data.BillingManager
 import com.hskmaster.app.data.PurchaseManager
 
 data class GameOption(
@@ -51,9 +53,30 @@ fun GameSelectionScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val activity = context as? Activity
+
+    // Initialize managers
     val purchaseManager = remember { PurchaseManager(context) }
-    var isPremium by remember { mutableStateOf(purchaseManager.isPremium()) }
+    val billingManager = remember { BillingManager(context, purchaseManager) }
+
+    // Observe billing state
+    val isPremium by billingManager.isPremium.collectAsState()
+    val isConnected by billingManager.isConnected.collectAsState()
+    val purchaseInProgress by billingManager.purchaseInProgress.collectAsState()
+
     var showPremiumDialog by remember { mutableStateOf(false) }
+
+    // Connect to billing on first composition
+    LaunchedEffect(Unit) {
+        billingManager.connect()
+    }
+
+    // Disconnect when leaving
+    DisposableEffect(Unit) {
+        onDispose {
+            billingManager.disconnect()
+        }
+    }
 
     val gameOptions = remember {
         listOf(
@@ -129,12 +152,13 @@ fun GameSelectionScreen(
     // Premium Dialog
     if (showPremiumDialog) {
         PremiumDialog(
+            price = billingManager.getFormattedPrice(),
+            isLoading = purchaseInProgress,
             onDismiss = { showPremiumDialog = false },
             onPurchase = {
-                // TODO: Integrate Google Play Billing here
-                // For now, just toggle premium for testing
-                isPremium = purchaseManager.togglePremium()
-                showPremiumDialog = false
+                if (activity != null && billingManager.isReady()) {
+                    billingManager.launchPurchaseFlow(activity)
+                }
             }
         )
     }
@@ -318,11 +342,13 @@ fun GameOptionCard(
 
 @Composable
 fun PremiumDialog(
+    price: String,
+    isLoading: Boolean = false,
     onDismiss: () -> Unit,
     onPurchase: () -> Unit
 ) {
     AlertDialog(
-        onDismissRequest = onDismiss,
+        onDismissRequest = { if (!isLoading) onDismiss() },
         icon = {
             Box(
                 modifier = Modifier
@@ -389,20 +415,38 @@ fun PremiumDialog(
         confirmButton = {
             Button(
                 onClick = onPurchase,
+                enabled = !isLoading,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFFFFD700)
                 ),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
-                    text = "Get Premium - £0.99",
-                    color = Color.Black,
-                    fontWeight = FontWeight.Bold
-                )
+                if (isLoading) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(20.dp),
+                        color = Color.Black,
+                        strokeWidth = 2.dp
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Processing...",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold
+                    )
+                } else {
+                    Text(
+                        text = "Get Premium - $price",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) {
+            TextButton(
+                onClick = onDismiss,
+                enabled = !isLoading
+            ) {
                 Text("Maybe Later")
             }
         }
